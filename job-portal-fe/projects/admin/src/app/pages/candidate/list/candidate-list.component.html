@@ -1,0 +1,37 @@
+
+<div class="grid mt-3">
+    <div class="col-12">
+        <p-card header="Candidate List">
+            <div class="grid">
+                <div class="col-12 flex flex-row-reverse">
+                    <p-button  icon="pi pi-plus" label="Add" styleClass="p-button-success"></p-button>
+                </div>
+                <div class="col">
+                    
+                </div>
+            </div>       
+            <p-table [value]="candidates" [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>No.</th>
+                        <th>NIK</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Experience Year</th>        
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-candidates let-rowIndex="rowIndex">
+                    <tr>
+                        <td>{{rowIndex+1}}</td>
+                        <td>{{ candidates.nik }}</td>
+                        <td>{{ candidates.name }}</td>
+                        <td>{{ candidates.email }}</td>
+                        <td>{{ candidates.phone }}</td>
+                        <td>{{ candidates.experienceYear }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-card>
+    </div>
+</div>
