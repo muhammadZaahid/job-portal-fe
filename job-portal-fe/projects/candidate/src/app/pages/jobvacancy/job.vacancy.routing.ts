@@ -2,16 +2,10 @@ import { RouterModule, Routes } from "@angular/router";
 import { JobVacancyListComponent } from "./list/job-vacancy-list.component";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { SplitterModule } from 'primeng/splitter';
-import { ScrollerModule } from 'primeng/scroller';
 import { CardModule } from 'primeng/card';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
-import { PickListModule } from 'primeng/picklist';
-import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { ButtonModule } from "primeng/button";
 import { DividerModule } from 'primeng/divider';
-
-
 
 const routes : Routes = [
     {
@@ -27,12 +21,8 @@ const routes : Routes = [
     imports : [
         RouterModule.forChild(routes),
         CommonModule,
-        SplitterModule,
-        ScrollerModule,
         CardModule,
         ScrollPanelModule,
-        PickListModule,
-        VirtualScrollerModule,
         ButtonModule,
         DividerModule
     ],

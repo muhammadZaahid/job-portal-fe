@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { MenuItem } from "primeng/api/menuitem";
-// import { AuthService } from "../../services/auth.service";
 
 @Component({
     selector: 'app-navbar',
@@ -11,7 +10,6 @@ export class NavbarComponent implements OnInit{
 
     items : MenuItem[] | undefined
     constructor(
-        // private authService : AuthService,
         private router : Router
     ){}
 
@@ -40,12 +38,7 @@ export class NavbarComponent implements OnInit{
                 style : {'margin-left': '47rem'}
             }
 
-        ]  
-          
-        // const profile = this.authService.getProfile()
-        // if(profile){
-            
-        // }
+        ]            
     }
 
     onLogOut(){
