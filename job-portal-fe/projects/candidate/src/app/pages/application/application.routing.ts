@@ -2,6 +2,8 @@ import { RouterModule, Routes } from "@angular/router";
 import { ApplicationListComponent } from "./list/application-list.component";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { TabMenuModule } from "primeng/tabmenu";
+import { AvatarModule } from 'primeng/avatar';
 
 const routes : Routes = [
     {
@@ -16,7 +18,9 @@ const routes : Routes = [
     ],
     imports : [
         RouterModule.forChild(routes),
-        CommonModule
+        CommonModule,
+        TabMenuModule,
+        AvatarModule
     ],
     exports : [
         RouterModule,
