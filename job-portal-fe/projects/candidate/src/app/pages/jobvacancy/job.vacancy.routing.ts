@@ -6,6 +6,11 @@ import { SplitterModule } from 'primeng/splitter';
 import { ScrollerModule } from 'primeng/scroller';
 import { CardModule } from 'primeng/card';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { PickListModule } from 'primeng/picklist';
+import { VirtualScrollerModule } from 'primeng/virtualscroller';
+import { ButtonModule } from "primeng/button";
+import { DividerModule } from 'primeng/divider';
+
 
 
 const routes : Routes = [
@@ -25,7 +30,11 @@ const routes : Routes = [
         SplitterModule,
         ScrollerModule,
         CardModule,
-        ScrollPanelModule
+        ScrollPanelModule,
+        PickListModule,
+        VirtualScrollerModule,
+        ButtonModule,
+        DividerModule
     ],
     exports : [
         RouterModule,

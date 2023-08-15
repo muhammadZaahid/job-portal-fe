@@ -19,10 +19,12 @@ export class NavbarComponent implements OnInit{
         this.items = [          
             {
                 label : 'Search Job',
-                icon : 'pi pi-search'
+                icon : 'pi pi-search',
+                routerLink : '/candidate/jobvacancy'
             },
             {
-                label : 'Profile'
+                label : 'Profile',
+                routerLink : '/candidate/profile'
             },
             {
                 label : 'Application'

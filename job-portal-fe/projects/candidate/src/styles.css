@@ -3,9 +3,7 @@
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 @import "primeflex/themes/primeone-light.css";
-@import "primeflex/themes/primeone-dark.css ";
 body {
     font-family: var(--font-family);
-    background-color: #4682A9;
-    
+    margin: 0;
 }

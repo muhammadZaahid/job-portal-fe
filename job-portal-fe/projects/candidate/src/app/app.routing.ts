@@ -13,8 +13,12 @@ const routes : Routes = [
     {
         component : BaseComponent,
         path : 'candidate/jobvacancy',
-        loadChildren : () => import('./pages/jobvacancy/job.vacancy.module').then(j => j.JobVacancyModule)
-        
+        loadChildren : () => import('./pages/jobvacancy/job.vacancy.module').then(j => j.JobVacancyModule)        
+    },
+    {
+        component : BaseComponent,
+        path : 'candidate/profile',
+        loadChildren : () => import('./pages/profile/profile.module').then(p => p.ProfileModule)        
     }
 
 ]

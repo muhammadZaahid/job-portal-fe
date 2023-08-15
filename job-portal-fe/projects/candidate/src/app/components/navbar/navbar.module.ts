@@ -4,6 +4,8 @@ import { RouterModule } from "@angular/router";
 import { NavbarComponent } from "./navbar.component";
 import {MenubarModule} from 'primeng/menubar';
 import { TabMenuModule } from 'primeng/tabmenu';
+import { ButtonModule } from "primeng/button";
+import { CardModule } from "primeng/card";
 
 @NgModule({
     declarations : [
@@ -13,7 +15,9 @@ import { TabMenuModule } from 'primeng/tabmenu';
         RouterModule,
         CommonModule,
         MenubarModule,
-        TabMenuModule
+        TabMenuModule,
+        ButtonModule,
+        CardModule
     ],
     exports : [
         NavbarComponent
