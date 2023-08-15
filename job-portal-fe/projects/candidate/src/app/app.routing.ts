@@ -19,6 +19,11 @@ const routes : Routes = [
         component : BaseComponent,
         path : 'candidate/profile',
         loadChildren : () => import('./pages/profile/profile.module').then(p => p.ProfileModule)        
+    },
+    {
+        component : BaseComponent,
+        path : 'candidate/application',
+        loadChildren : () => import('./pages/application/application.module').then(a => a.ApplicationModule)
     }
 
 ]

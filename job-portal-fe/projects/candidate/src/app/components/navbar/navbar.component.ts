@@ -25,7 +25,8 @@ export class NavbarComponent implements OnInit{
                 routerLink : '/candidate/profile'
             },
             {
-                label : 'Application'
+                label : 'Application',
+                routerLink : '/candidate/application'
             },
             {
                 icon : 'pi pi-user',
