@@ -7,3 +7,19 @@ body {
     font-family: var(--font-family);
     margin: 0;
 }
+
+.p-button.edit-profile-button {
+	background-color: #B4F8C8!important;
+	color: #0A4C86!important;
+}
+
+.i.resume-menu-icon {
+    background-color: #0A4C86!important;
+}
+
+.p-button.resume-menu-button {
+	background-color: white!important;
+	color: #0A4C86!important;
+    border: 0;
+}
+

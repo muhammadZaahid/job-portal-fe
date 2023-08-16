@@ -1,1 +1,151 @@
-<h1 class="p-3">Profile Detail</h1>
+<div class="grid mx-2 mt-3">
+    <div class="col-10 col-offset-1">
+        <p-panel header="My Profile">
+            <!-- <div class="flex flex-row">
+                <span>
+                    <img [style]="{width: '7rem', height: '7rem'}"
+                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSorWw_NxS1hwieUhifQH2Fb0WkFQiQtWwafg&usqp=CAU" 
+                     alt="">                 
+                </span>    
+                <span class="font-bold text-lg mx-8 mt-3">
+                    Muhammad Zaahid Rahmatulloh
+                </span>
+            </div>               -->
+            <div class="grid">
+                <div class="col-12 md:col-8">
+                    <div class="flex flex-row">
+                        <span>
+                            <img [style]="{width: '7rem', height: '7rem'}"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSorWw_NxS1hwieUhifQH2Fb0WkFQiQtWwafg&usqp=CAU"
+                                alt="">
+                        </span>
+                        <span class="font-bold text-lg mx-3 md:mx-8 mt-3">
+                            Muhammad Zaahid Rahmatulloh
+                        </span>
+                    </div>
+                </div>
+                <div class="col-12 md:col-2 md:col-offset-2 mt-3">
+                    <p-button styleClass="edit-profile-button">Edit Profile</p-button>
+                </div>
+                <div class="col">
+                    <span class="font-bold text-xl">
+                        Profile Detail
+                    </span>
+                    <p-divider></p-divider>
+
+                    <div class="grid text-base">
+                        <div class="col-12 md:col-4">
+                            <div class="flex flex-column">
+                                <div class="flex flex-column mb-3">
+                                    <span class="text-color-secondary">
+                                        Name
+                                    </span>
+                                    <span>
+                                        Muhammad Zaahid Rahmatulloh
+                                    </span>
+                                </div>
+
+                                <div class="flex flex-column mb-3">
+                                    <span class="text-color-secondary">
+                                        NIK
+                                    </span>
+                                    <span>
+                                        -
+                                    </span>
+                                </div>
+
+                                <div class="flex flex-column mb-3">
+                                    <span class="text-color-secondary">
+                                        Phone
+                                    </span>
+                                    <span>
+                                        085158119231
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 md:col-4">
+                            <div class="flex flex-column">
+                                <div class="flex flex-column mb-3">
+                                    <span class="text-color-secondary">
+                                        E-mail
+                                    </span>
+                                    <span>
+                                        muhammadZaahid24@gmail.com
+                                    </span>
+                                </div>
+
+                                <div class="flex flex-column mb-3">
+                                    <span class="text-color-secondary">
+                                        Birth Date
+                                    </span>
+                                    <span>
+                                        12-03-1999
+                                    </span>
+                                </div>
+
+                                <div class="flex flex-column mb-3">
+                                    <span class="text-color-secondary">
+                                        Birth Place
+                                    </span>
+                                    <span>
+                                        -
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 md:col-4">
+                            <div class="flex flex-column">
+                                <div class="flex flex-column mb-3">
+                                    <span class="text-color-secondary">
+                                        Experience Year
+                                    </span>
+                                    <span>
+                                        3
+                                    </span>
+                                </div>
+
+                                <div class="flex flex-column mb-3">
+                                    <span class="text-color-secondary">
+                                        Expected Salary
+                                    </span>
+                                    <span>
+                                        Rp. 4.000.000
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p-divider></p-divider>
+                    <span class="font-bold text-xl">
+                        Resume
+                    </span>
+                    <div class="mt-2">
+                        <p-card>
+                            <div class="grid">
+                                <div class="col">
+                                    <div class="flex flex-row">
+                                        <div class="flex flex-column">
+                                            <i class="pi pi-file-pdf" style="font-size: 4rem"></i>
+                                            <span class="mx-3">PDF</span>
+                                        </div>
+                                        <div class="mx-3 mt-2">
+                                            <div class="flex flex-column">
+                                                <span class="font-bold text-base mb-1">Resume-Zaahid.pdf</span>
+                                                <span class="text-color-secondary">Added July 18, 2023</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex align-items-center justify-content-center">
+                                    <p-menu #menu [model]="resumeMenuItems" [popup]="true"></p-menu>
+                                    <p-button icon="pi pi-ellipsis-v" (click)="menu.toggle($event)" styleClass="resume-menu-button"></p-button>                             
+                                </div>                                
+                            </div>
+                        </p-card>
+                    </div>
+                </div>
+            </div>
+        </p-panel>
+    </div>
+</div>
