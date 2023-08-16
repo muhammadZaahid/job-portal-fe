@@ -1,0 +1,165 @@
+<div class="grid mx-2 mt-3">
+    <div class="col-10 col-offset-1">
+        <p-panel header="My Profile">
+            <div class="grid">
+                <div class="col-12 md:col-8">
+                    <div class="flex flex-row">
+                        <span>
+                            <div class="relative">
+                                <div class="static">
+                                    <div [style]="{width: '8rem', height: '8rem'}">
+                                        <img [style]="{width: '7rem', height: '7rem'}"
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSorWw_NxS1hwieUhifQH2Fb0WkFQiQtWwafg&usqp=CAU"
+                                            alt="">
+                                    </div>
+                                    <div class="absolute bottom-0 right-0">
+                                        <span>
+                                            <p-fileUpload chooseIcon="pi pi-pencil" mode="basic"
+                                                styleClass="edit-profile-button p-button-rounded p-button-info">                                               
+                                            </p-fileUpload>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </span>
+                        <span class="font-bold text-lg mx-3 md:mx-8 mt-3">
+                            Muhammad Zaahid Rahmatulloh
+                        </span>
+                    </div>
+                </div>
+                <div class="col-12 md:col-3 col-offset-1 mt-3">
+                    <div class="flex flex-row">
+                        <p-button styleClass="edit-profile-button mx-2 md:mx-2"
+                            routerLink="/candidate/profile">Cancel</p-button>
+                        <p-button styleClass="save-profile-button">Save Change</p-button>
+                    </div>
+                </div>
+                <div class="col">
+                    <span class="font-bold text-xl">
+                        Profile Detail
+                    </span>
+                    <p-divider></p-divider>
+
+                    <div class="grid text-base">
+                        <div class="col-12 md:col-6">
+                            <div class="flex flex-column">
+                                <div class="grid">
+                                    <div class="col-12 md:col-3">
+                                        <Label>Name</Label>
+                                    </div>
+                                    <div class="col-12 md:col-7">
+                                        <div class="p-inputgroup">
+                                            <input class="p-inputtext-sm" pInputText type="text">
+                                            <span class="p-inputgroup-addon">
+                                                <i class="pi pi-user"></i>
+                                            </span>  
+                                        </div>                                                                           
+                                    </div>
+                                    <div class="col-12 md:col-3">
+                                        <Label>NIK</Label>
+                                    </div>
+                                    <div class="col-12 md:col-9">
+                                        <input class="p-inputtext-sm" pKeyFilter="int" pInputText type="text">
+                                    </div>
+                                    <div class="col-12 md:col-3">
+                                        <Label>Phone</Label>
+                                    </div>
+                                    <div class="col-12 md:col-9">
+                                        <input class="p-inputtext-sm" pKeyFilter="int" pInputText type="text">
+                                    </div>
+                                    <div class="col-12 md:col-3">
+                                        <Label>E-mail</Label>
+                                    </div>
+                                    <div class="col-12 md:col-9">
+                                        <input class="p-inputtext-sm" pInputText type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 md:col-6">
+                            <div class="flex flex-column">
+                                <div class="grid">
+                                    <div class="col-12 md:col-4">
+                                        <Label>Birth Date</Label>
+                                    </div>
+                                    <div class="col-12 md:col-7">
+                                        <div class="p-inputgroup">
+                                            <p-calendar class="p-inputtext-sm" [touchUI]="true" [readonlyInput]="true"
+                                            ></p-calendar>
+                                            <span class="p-inputgroup-addon">
+                                                <i class="pi pi-calendar"></i>
+                                            </span>
+                                        </div>                                       
+                                    </div>
+                                    <div class="col-12 md:col-4">
+                                        <Label>Birth Place</Label>
+                                    </div>
+                                    <div class="col-12 md:col-7">
+                                        <div class="p-inputgroup">                                           
+                                            <input class="p-inputtext-sm" pInputText type="text">
+                                            <span class="p-inputgroup-addon">
+                                                <i class="pi pi-map-marker"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 md:col-4">
+                                        <Label>Experience Year</Label>
+                                    </div>
+                                    <div class="col-12 md:col-7">
+                                        <div class="p-inputgroup"> 
+                                            <input pKeyFilter="int" class="p-inputtext-sm" pInputText type="text">
+                                            <span class="p-inputgroup-addon">
+                                                Years
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div>
+
+                                    </div>
+                                    <div class="col-12 md:col-4">
+                                        <Label>Salary Expectation</Label>
+                                    </div>
+                                    <div class="col-12 md:col-7">
+                                        <div class="p-inputgroup">
+                                            <span class="p-inputgroup-addon">
+                                                Rp.
+                                            </span>
+                                            <input pKeyFilter="num" class="p-inputtext-sm" pInputText type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p-divider></p-divider>
+                    <span class="font-bold text-xl">
+                        Resume
+                    </span>
+                    <div class="mt-2">
+                        <p-card>
+                            <div class="grid">
+                                <div class="col-12 md:col-3">
+                                    <div class="flex flex-row">
+                                        <div class="flex flex-column">
+                                            <i class="pi pi-file-pdf" style="font-size: 4rem"></i>
+                                            <span class="mx-3">PDF</span>
+                                        </div>
+                                        <div class="mx-3 mt-2">
+                                            <div class="flex flex-column">
+                                                <span class="font-bold text-base mb-1">Resume-Zaahid.pdf</span>
+                                                <span class="text-color-secondary">Added July 18, 2023</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 md:col-3 md:col-offset-6">
+                                    <p-button styleClass="edit-profile-button">Update Resume</p-button>
+                                </div>
+                            </div>
+                        </p-card>
+                    </div>
+                </div>
+            </div>
+        </p-panel>
+    </div>
+</div>

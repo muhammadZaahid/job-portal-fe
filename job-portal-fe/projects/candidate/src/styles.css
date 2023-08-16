@@ -11,6 +11,13 @@ body {
 .p-button.edit-profile-button {
 	background-color: #B4F8C8!important;
 	color: #0A4C86!important;
+	border: 0;
+}
+
+.p-button.save-profile-button {
+	background-color: #0A4C86!important;
+	color: #B4F8C8!important;
+	border: 0;
 }
 
 .i.resume-menu-icon {
@@ -22,4 +29,5 @@ body {
 	color: #0A4C86!important;
     border: 0;
 }
+
 
