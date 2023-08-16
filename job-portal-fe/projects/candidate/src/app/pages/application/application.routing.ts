@@ -4,6 +4,8 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { TabMenuModule } from "primeng/tabmenu";
 import { AvatarModule } from 'primeng/avatar';
+import { BadgeModule } from 'primeng/badge';
+import { DividerModule } from 'primeng/divider';
 
 const routes : Routes = [
     {
@@ -20,7 +22,9 @@ const routes : Routes = [
         RouterModule.forChild(routes),
         CommonModule,
         TabMenuModule,
-        AvatarModule
+        AvatarModule,
+        BadgeModule,
+        DividerModule
     ],
     exports : [
         RouterModule,
