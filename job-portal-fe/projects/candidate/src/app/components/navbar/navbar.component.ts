@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit{
                         icon: 'pi pi-sign-in'
                     }
                 ],
-                style : {'margin-left': '47rem'}
+                style : {'right': '0'}
             }
 
         ]            
