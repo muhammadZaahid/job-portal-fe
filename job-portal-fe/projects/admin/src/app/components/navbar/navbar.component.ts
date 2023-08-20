@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit{
                             routerLink: '/companies'
                         }
                     ]
-                },
+                },                
                 {
                     label: profile.profileName,
                     icon: 'pi pi-fw pi-user',

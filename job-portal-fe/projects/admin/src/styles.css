@@ -6,4 +6,10 @@
 @import "primeflex/themes/primeone-dark.css ";
 body {
     font-family: var(--font-family);
+    margin: 0;
 }
+
+.p-menubar.menubar-style{
+    width:100vw;
+}
+
