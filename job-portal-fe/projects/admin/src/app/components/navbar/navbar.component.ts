@@ -29,14 +29,14 @@ export class NavbarComponent implements OnInit{
                     icon: 'pi pi-fw pi-file',
                     items: [
                         {
-                            label: 'User',
-                            icon: 'pi pi-fw pi-external-link',
-                            routerLink: '/users'
-                        },                       
-                        {
                             label: 'Company',
                             icon: 'pi pi-fw pi-external-link',
-                            routerLink: '/companies'
+                            routerLink: '/admin/company'
+                        },                       
+                        {
+                            label: 'Candidate',
+                            icon: 'pi pi-fw pi-external-link',
+                            routerLink: '/admin/candidate'
                         }
                     ]
                 },                
