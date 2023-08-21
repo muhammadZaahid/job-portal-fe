@@ -14,7 +14,8 @@ export class CompanyListComponent implements OnInit{
 
     constructor(
         private companyService : CompanyService,
-        private authService: AuthService
+        private authService: AuthService,
+        private roter : Router
     ){}
 
     ngOnInit(): void {
@@ -32,5 +33,9 @@ export class CompanyListComponent implements OnInit{
             this.companies = result
             console.log(result)
         })
+    }
+
+    navigateToId(id : number){
+        this.roter.navigateByUrl(`/admin/company/edit/${id}`)
     }
 }

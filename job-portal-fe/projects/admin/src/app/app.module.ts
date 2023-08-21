@@ -4,6 +4,8 @@ import { AppComponent } from './app.component';
 import { AppRouting } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,9 @@ import { MessageService } from 'primeng/api';
   imports: [
     BrowserModule,
     AppRouting,
-    HttpClientModule
+    HttpClientModule,
+    ToastModule,
+    BrowserAnimationsModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

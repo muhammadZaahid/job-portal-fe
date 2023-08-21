@@ -38,6 +38,12 @@ export class BaseService {
             .pipe(response(this.messageService, this.router))
     }
 
+    put<T>(url: string, body: any, withToken = true): Observable<T> {
+        return this.http.put<T>(url, body, (withToken ? this.header : undefined))
+            .pipe(response(this.messageService, this.router))
+    }
+
+
     patch<T>(url: string, body: any, withToken = true): Observable<T> {
         return this.http.patch<T>(url, body, (withToken ? this.header : undefined))
             .pipe(response(this.messageService, this.router))
