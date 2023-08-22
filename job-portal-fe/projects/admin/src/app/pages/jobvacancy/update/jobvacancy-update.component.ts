@@ -50,7 +50,7 @@ export class JobVacancyUpdateComponent implements OnInit{
     ngOnInit(): void {
         const jobVacancyId = this.activatedRoute.snapshot.params['id'];
         this.getJobVacancyById(jobVacancyId)   
-        this.getUsers()
+        this.getPicList()
         this.getCompanies()
         this.getJobLevels()        
     }
@@ -79,8 +79,8 @@ export class JobVacancyUpdateComponent implements OnInit{
         })
     }
 
-    getUsers(){
-        this.userService.getUsers().subscribe(result =>{
+    getPicList(){
+        this.userService.getPicList().subscribe(result =>{
             this.users = result
         })
     }

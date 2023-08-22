@@ -33,6 +33,12 @@ const routes : Routes = [
     },
     {
         component : BaseComponent,
+        path : 'admin/user',
+        loadChildren : () => import('./pages/user/user.module').then(u => u.UserModule),
+        canMatch : [authValidation]
+    },
+    {
+        component : BaseComponent,
         path : 'dashboard',
         children : [
             {

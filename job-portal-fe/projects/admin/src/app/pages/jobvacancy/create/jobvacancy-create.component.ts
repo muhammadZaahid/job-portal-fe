@@ -48,7 +48,7 @@ export class JobVacancyCreateComponent implements OnInit{
     ngOnInit(): void {
         this.getCompanies()
         this.getJobLevels()
-        this.getUsers()
+        this.getPicList()
     }
 
     onAdd() {
@@ -75,8 +75,8 @@ export class JobVacancyCreateComponent implements OnInit{
         })
     }
 
-    getUsers(){
-        this.userService.getUsers().subscribe(result =>{
+    getPicList(){
+        this.userService.getPicList().subscribe(result =>{
             this.users = result
         })
     }

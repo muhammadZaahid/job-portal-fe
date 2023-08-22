@@ -1,0 +1,54 @@
+<div class="grid">
+    <div class="col-12 md:col-10 md:col-offset-1 mt-7 md:mt-7">
+        <p-card header="Add User">
+            <form [formGroup]="userInsertReqDto" (ngSubmit)="onAdd()">
+                <div class="col-12 flex flex-row-reverse">
+                    <p-button type="submit" icon="pi pi-save" label="Save"
+                        styleClass="p-button-sm"></p-button>
+                    <p-button class="mx-2" routerLink="/admin/company" icon="pi pi-times" label="Cancel"
+                        styleClass="p-button-sm"></p-button>
+                </div>
+                <p-divider></p-divider>
+                <div class="grid text-base">
+                    <div class="col-12 md:col-6">
+                        <div class="flex flex-column">
+                            <div class="grid">
+                                <div class="col-12 md:col-3">
+                                    <Label>E-mail</Label>
+                                </div>
+                                <div class="col-12 md:col-7">
+                                    <input formControlName="email" class="p-inputtext-sm" pInputText type="text">
+                                </div>
+                                <div class="col-12 md:col-3">
+                                    <Label>Password</Label>
+                                </div>
+                                <div class="col-12 md:col-9">
+                                    <input formControlName="password" class="p-inputtext-sm" pKeyFilter="int" pInputText type="password">
+                                </div>                                                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 md:col-6">
+                        <div class="flex flex-column">
+                            <div class="grid">
+                                <div class="col-12 md:col-3">
+                                    <Label>Name</Label>
+                                </div>
+                                <div class="col-12 md:col-9">
+                                    <input formControlName="fullName" class="p-inputtext-sm" pKeyFilter="int" pInputText type="text">
+                                </div> 
+                                <div class="col-12 md:col-3">
+                                    <Label>Phone</Label>
+                                </div>
+                                <div class="col-12 md:col-9">
+                                    <input formControlName="phone" class="p-inputtext-sm" pKeyFilter="int" pInputText type="text">
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </p-card>
+        <pre>{{userInsertReqDto.value | json}}</pre>
+    </div>
+</div>
