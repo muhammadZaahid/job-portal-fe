@@ -30,12 +30,17 @@ export class NavbarComponent implements OnInit{
                     items: [
                         {
                             label: 'Company',
-                            icon: 'pi pi-fw pi-external-link',
+                            icon: 'pi pi-fw pi-building',
                             routerLink: '/admin/company'
-                        },                       
+                        },   
+                        {
+                            label: 'Job Vacancy',
+                            icon: 'pi pi-fw pi-briefcase',
+                            routerLink: '/admin/job-vacancy'
+                        },                    
                         {
                             label: 'Candidate',
-                            icon: 'pi pi-fw pi-external-link',
+                            icon: 'pi pi-fw pi-user',
                             routerLink: '/admin/candidate'
                         }
                     ]

@@ -27,6 +27,12 @@ const routes : Routes = [
     },
     {
         component : BaseComponent,
+        path : 'admin/job-vacancy',
+        loadChildren : () => import('./pages/jobvacancy/job.vacancy.module').then(j => j.JobVacancyModule),
+        canMatch : [authValidation]
+    },
+    {
+        component : BaseComponent,
         path : 'dashboard',
         children : [
             {

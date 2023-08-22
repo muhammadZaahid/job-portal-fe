@@ -1,0 +1,129 @@
+<div class="grid">
+    <div class="col-12 md:col-10 md:col-offset-1 mt-7 md:mt-7">
+        <p-card header="Update Job Vacancy">
+            <form [formGroup]="jobVacancyUpdateReqDto" (ngSubmit)="onUpdate()">
+                <div class="col-12 flex flex-row-reverse">
+                    <p-button type="submit" icon="pi pi-save" label="Save" styleClass="p-button-sm"></p-button>
+                    <p-button class="mx-2" routerLink="/admin/job-vacancy" icon="pi pi-times" label="Cancel"
+                        styleClass="p-button-sm"></p-button>
+                </div>
+                <p-divider></p-divider>
+                <div class="grid text-base">
+                    <div class="col-12 md:col-6">
+                        <div class="flex flex-column">
+                            <div class="grid">
+                                <div class="col-12 md:col-3">
+                                    <Label>Title</Label>
+                                </div>
+                                <div class="col-12 md:col-7">
+                                    <input formControlName="title" class="p-inputtext-sm" pInputText type="text">
+                                </div>
+                                <div class="col-12 md:col-3">
+                                    <Label>PIC</Label>
+                                </div>
+                                <div class="col-12 md:col-9">
+                                    <p-dropdown
+                                        [filter]="true"
+                                        fileterBy="fullname"
+                                        styleClass="custom-dropdown"
+                                        formControlName="picId"
+                                        [options]="users"
+                                        [(ngModel)]="selectedUser"
+                                        optionLabel="fullname"
+                                        optionValue="id"
+                                    >                                        
+                                    </p-dropdown>
+                                </div>
+                                <div class="col-12 md:col-3">
+                                    <Label>Company</Label>
+                                </div>
+                                <div class="col-12 md:col-9">
+                                    <p-dropdown 
+                                        [filter]="true" 
+                                        filterBy="companyName" 
+                                        styleClass="custom-dropdown"
+                                        formControlName="companyId" 
+                                        [options]="companies" 
+                                        [(ngModel)]="selectedCompany"
+                                        optionLabel="companyName" 
+                                        optionValue="id"
+                                        >                                        
+                                    </p-dropdown>                                    
+                                </div>
+                                <div class="col-12 md:col-3">
+                                    <Label>Job Level</Label>
+                                </div>
+                                <div class="col-12 md:col-7">
+                                    <p-dropdown                                     
+                                    styleClass="custom-dropdown"
+                                    formControlName="jobLevelId" 
+                                    [options]="jobLevels" 
+                                    [(ngModel)]="selectedJobLevel"
+                                    optionLabel="jobLevelName" 
+                                    optionValue="id"
+                                    >                                        
+                                    </p-dropdown>     
+                                </div>
+                                <div class="col-12 md:col-3">
+                                    <Label>Location</Label>
+                                </div>
+                                <div class="col-12 md:col-9">
+                                    <input formControlName="location" class="p-inputtext-sm" pKeyFilter="int" pInputText
+                                        type="text">
+                                </div>
+                                <div class="col-12 md:col-3">
+                                    <Label>Benefit</Label>
+                                </div>
+                                <div class="col-12 md:col-9">
+                                    <input formControlName="benefitDesc" class="p-inputtext-sm" pKeyFilter="int"
+                                        pInputText type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 md:col-6">
+                        <div class="flex flex-column">
+                            <div class="grid">
+                                <div class="col-12 md:col-3">
+                                    <Label>Salary From</Label>
+                                </div>
+                                <div class="col-12 md:col-7">
+                                    <input formControlName="salaryFrom" class="p-inputtext-sm" pInputText type="text">
+                                </div>
+                                <div class="col-12 md:col-3">
+                                    <Label>Salary To</Label>
+                                </div>
+                                <div class="col-12 md:col-9">
+                                    <input formControlName="salaryTo" class="p-inputtext-sm" pKeyFilter="int" pInputText
+                                        type="text">
+                                </div>
+                                <div class="col-12 md:col-3">
+                                    <Label>Start Date</Label>
+                                </div>
+                                <div class="col-12 md:col-9">
+                                    <p-calendar formControlName="startDate" dateFormat="yy-mm-dd"
+                                        (onSelect)="startDateWithoutTime($event)"></p-calendar>
+                                </div>
+                                <div class="col-12 md:col-3">
+                                    <Label>End Date</Label>
+                                </div>
+                                <div class="col-12 md:col-7">
+                                    <p-calendar formControlName="endDate" dateFormat="yy-mm-dd"
+                                        (onSelect)="endDateWithoutTime($event)"></p-calendar>
+                                </div>
+                                <div class="col-12 md:col-3">
+                                    <Label>Salary Publish</Label>
+                                </div>
+                                <div class="col-12 md:col-9">
+                                    <p-toggleButton styleClass="p-button-sm" formControlName="salaryPublish"
+                                        onLabel="Yes" offLabel="No"></p-toggleButton>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </p-card>
+        <pre>{{jobVacancyUpdateReqDto.value | json}}</pre>
+    </div>
+</div>
