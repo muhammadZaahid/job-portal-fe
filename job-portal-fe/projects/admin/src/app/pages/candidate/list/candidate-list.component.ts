@@ -12,6 +12,7 @@ export class CandidateListComponent implements OnInit{
 
     candidates!: CandidateResDto[]
     selectedCandidate! : CandidateResDto
+    clickedRadioButton = true
 
     constructor(
         private candidateService : CandidateService,
