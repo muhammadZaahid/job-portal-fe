@@ -1,0 +1,66 @@
+
+<div class="grid">
+    <div class="col-12 md:col-12 mt-6 md:mt-6">
+        <p-card header="Applicant List">
+               
+            <p-table selectionMode="single" [value]="applicants" [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>E-Mail</th>
+                        <th>NIK</th>
+                        <th>Job Title</th>
+                        <th>Stage</th>
+                        <th>Applied Date</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-applicants let-rowIndex="rowIndex">
+                    <tr (click)="navigateToId(applicants.id)">
+                        <td>{{rowIndex+1}}</td>
+                        <td>{{ applicants.candidateName }}</td>
+                        <td>{{ applicants.candidateEmail }}</td>
+                        <td>{{ applicants.candidateNik }}</td>
+                        <td>{{ applicants.jobTitle }}</td>
+                        <td>{{ applicants.currentStage }}</td>     
+                        <td>{{ applicants.appliedDate }}</td>                  
+                    </tr>                                       
+                </ng-template>
+            </p-table>
+        </p-card>         
+    </div>
+</div>    
+
+<!-- <p-dialog header="Add Applicant"  [(visible)]="visible"  [style]="{width: '65vw', height:'60vh'}">
+    <form [formGroup]="applicantInsertReqDto" (ngSubmit)="onAdd()">
+        <div class="grid mt-6 md:mt-6 justify-content-center">
+            <p-table [(selection)]="selectedCandidate" [value]="candidates" [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="header">
+                    <tr>  
+                        <th style="width: 4rem"></th>
+                        <th>No.</th>
+                        <th>NIK</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Experience Year</th>                 
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-candidates let-rowIndex="rowIndex">
+                    <tr >
+                        <td>
+                            <p-tableRadioButton [value]="candidates"></p-tableRadioButton>
+                        </td>
+                        <td>{{rowIndex+1}}</td>
+                        <td>{{ candidates.nik }}</td>
+                        <td>{{ candidates.name }}</td>
+                        <td>{{ candidates.email }}</td>
+                        <td>{{ candidates.phone }}</td>
+                        <td>{{ candidates.experienceYear }}</td>                 
+                    </tr>                                       
+                </ng-template>
+            </p-table>
+        </div> 
+    </form>       
+</p-dialog> -->
+

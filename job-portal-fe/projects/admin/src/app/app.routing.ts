@@ -45,6 +45,12 @@ const routes : Routes = [
     },
     {
         component : BaseComponent,
+        path : 'admin/applicant',
+        loadChildren : () => import('./pages/applicant/applicant.mocule').then(a => a.ApplicantModule),
+        canMatch : [authValidation]
+    },
+    {
+        component : BaseComponent,
         path : 'dashboard',
         children : [
             {

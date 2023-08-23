@@ -9,6 +9,7 @@ import { InputTextModule } from "primeng/inputtext";
 import { TableModule } from "primeng/table";
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
     imports : [
@@ -20,7 +21,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
         FileUploadModule,
         CalendarModule,
         DropdownModule,
-        InputTextareaModule        
+        InputTextareaModule,
+        DialogModule      
     ],
     exports : [
         TableModule,
@@ -32,7 +34,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
         ToggleButtonModule,
         CalendarModule,
         DropdownModule,
-        InputTextareaModule
+        InputTextareaModule,
+        DialogModule
     ]
 })
 export class SharedModule{
