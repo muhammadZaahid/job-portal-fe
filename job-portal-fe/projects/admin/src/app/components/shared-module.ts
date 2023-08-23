@@ -8,6 +8,7 @@ import { FileUploadModule } from "primeng/fileupload";
 import { InputTextModule } from "primeng/inputtext";
 import { TableModule } from "primeng/table";
 import { ToggleButtonModule } from 'primeng/togglebutton';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 @NgModule({
     imports : [
@@ -18,7 +19,8 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
         InputTextModule,
         FileUploadModule,
         CalendarModule,
-        DropdownModule        
+        DropdownModule,
+        InputTextareaModule        
     ],
     exports : [
         TableModule,
@@ -29,7 +31,8 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
         FileUploadModule,
         ToggleButtonModule,
         CalendarModule,
-        DropdownModule
+        DropdownModule,
+        InputTextareaModule
     ]
 })
 export class SharedModule{
