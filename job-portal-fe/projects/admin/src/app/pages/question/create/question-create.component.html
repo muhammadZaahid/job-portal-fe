@@ -1,0 +1,77 @@
+<div class="grid">
+    <div class="col-12 md:col-10 md:col-offset-1 mt-7 md:mt-7">
+        <p-card header="Add Company">
+            <form [formGroup]="questionTopicInsertReqDto" (ngSubmit)="onAdd()">
+                <div class="col-12 flex flex-row-reverse">
+                    <p-button type="submit" icon="pi pi-save" label="Save" styleClass="p-button-sm"></p-button>
+                    <p-button class="mx-2" routerLink="/admin/company" icon="pi pi-times" label="Cancel"
+                        styleClass="p-button-sm"></p-button>
+                </div>
+                <p-divider></p-divider>
+                <div class="grid text-base">
+                    <div class="col-12 md:col-8 md:col-offset-2">
+                        <div class="flex flex-column">
+                            <div class="grid">
+                                <div class="col-12 md:col-3">
+                                    <Label>Topic Title</Label>
+                                </div>
+                                <div class="col-12 md:col-7">
+                                    <input formControlName="topicTitle" class="p-inputtext-sm" pInputText type="text">
+                                </div>
+                                <div class="col-12 md:col-12">
+                                    <p-button label="Add Question" styleClass="p-button-sm"
+                                        (click)="onAddQuestion()"></p-button>
+                                </div>
+
+                                
+                                <div class="col-12 md:col-12">
+                                    <div *ngFor="let q of questions.controls; let i = index" formArrayName="questions">
+                                        <div [formGroupName]="i">
+                                            <div class="grid">
+                                                <div class="col-12 md:col-3">
+                                                    <Label>Question {{i+1}}</Label>
+                                                </div>
+                                                <div class="col-12 md:col-7">                                                                                                     
+                                                    <textarea formControlName="questionDesc"  pInputTextarea ></textarea>                                                
+                                                    <p-button class="md:mx-2 mx-2" (click)="removeQuestion(i)"  styleClass="p-button-danger p-button-sm" icon="pi pi-trash"></p-button>
+                                                </div>  
+                                                <div class="col-12 md:col-12">
+                                                    <p-button class="md:mx-2 mx-2" (click)="onAddOption(i)" styleClass="p-button-sm" label="Add Option"></p-button>
+                                                </div>
+                                                <div class="col-12 md:col-12">
+                                                    <div *ngFor="let o of options(i).controls; let j = index" formArrayName="options">
+                                                        <div [formGroupName]="j">
+                                                            <div class="grid">
+                                                                <div class="col-12 md:col-3">
+                                                                    <Label>Answer {{j+1}}</Label>
+                                                                </div>
+                                                                <div class="col-12 md:col-7">   
+                                                                    <div class="flex flex-row">
+                                                                        <input formControlName="answerText" class="p-inputtext-sm" pInputText type="text">
+                                                                        <p-toggleButton                                                                         
+                                                                        class="md:mx-2 mx-2"
+                                                                        formControlName="isCorrect"  
+                                                                        onLabel="Correct" 
+                                                                        offLabel="Wrong"  [style]="{ width: '6rem', height:'2.6rem' }"></p-toggleButton>
+                                                                        <p-button (click)="removeOption(i,j)"  styleClass="p-button-danger p-button-sm" icon="pi pi-trash"></p-button>
+                                                                    </div>                                                                                                  
+                                                                    
+                                                                </div>  
+                                                            </div>                                                             
+                                                        </div>                                                    
+                                                    </div>
+                                                </div>                                                
+                                            </div>                                                                                   
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </p-card>
+        <pre>{{questionTopicInsertReqDto.value | json}}</pre>
+    </div>
+</div>

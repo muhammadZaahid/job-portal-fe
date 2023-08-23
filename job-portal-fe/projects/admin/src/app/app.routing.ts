@@ -39,6 +39,12 @@ const routes : Routes = [
     },
     {
         component : BaseComponent,
+        path : 'admin/question',
+        loadChildren : () => import('./pages/question/question.module').then(q => q.QuestionModule),
+        canMatch : [authValidation]
+    },
+    {
+        component : BaseComponent,
         path : 'dashboard',
         children : [
             {
