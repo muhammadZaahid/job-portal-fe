@@ -5,6 +5,8 @@ import { ButtonModule } from "primeng/button";
 import { CardModule } from "primeng/card";
 import { TableModule } from "primeng/table";
 import { CandidateListComponent } from "./list/candidate-list.component";
+import { SharedModule } from "../../components/shared-module";
+import { ReactiveFormsModule } from "@angular/forms";
 
 const routes : Routes = [
     {
@@ -20,9 +22,8 @@ const routes : Routes = [
     imports : [
         RouterModule.forChild(routes),
         CommonModule,
-        TableModule,
-        CardModule,
-        ButtonModule
+        SharedModule,
+        ReactiveFormsModule
     ],
     exports : [
         RouterModule,

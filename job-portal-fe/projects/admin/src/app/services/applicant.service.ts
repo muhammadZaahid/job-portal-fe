@@ -26,4 +26,8 @@ export class ApplicantService{
     getApplicants() : Observable<ApplicantsResDto[]>{
         return this.base.get<ApplicantsResDto[]>(`${BASE_URL_ADMIN}/applicant`,true)
     }
+
+    addToVacancy(request : ApplicantInsertReqDto) :Observable<InsertResDto> {
+        return this.base.post<InsertResDto>(`${BASE_URL_ADMIN}/applicant`,request)
+    } 
 }
