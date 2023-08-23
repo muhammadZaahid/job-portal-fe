@@ -79,8 +79,8 @@ function response<T>(
                     detail: err.error.message
                 })
 
-                if (err.status == 401 && err.error.message === 'token expired') {
-                    console.log('token expired')
+                if (err.status == 401 && err.error.message === 'session expired') {
+                    console.log('session expired')
                     router.navigateByUrl('/login')
                     localStorage.clear()
                 }
