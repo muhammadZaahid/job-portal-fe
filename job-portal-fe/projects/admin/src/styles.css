@@ -17,3 +17,9 @@ body {
     width : 12.2rem
 }
 
+.p-button.resume-menu-button {
+	background-color: white!important;
+	color: #0A4C86!important;
+    border: 0;
+}
+

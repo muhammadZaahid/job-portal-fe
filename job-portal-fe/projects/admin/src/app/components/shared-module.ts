@@ -10,6 +10,9 @@ import { TableModule } from "primeng/table";
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { MenuModule } from 'primeng/menu';
+
 
 @NgModule({
     imports : [
@@ -22,7 +25,9 @@ import { DialogModule } from 'primeng/dialog';
         CalendarModule,
         DropdownModule,
         InputTextareaModule,
-        DialogModule      
+        DialogModule,
+        ConfirmDialogModule,
+        MenuModule
     ],
     exports : [
         TableModule,
@@ -35,7 +40,9 @@ import { DialogModule } from 'primeng/dialog';
         CalendarModule,
         DropdownModule,
         InputTextareaModule,
-        DialogModule
+        DialogModule,
+        ConfirmDialogModule,
+        MenuModule
     ]
 })
 export class SharedModule{
