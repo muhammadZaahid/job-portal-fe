@@ -56,10 +56,7 @@ export class ApplicantListComponent {
     }
 
     navigateToId(id: number) {
-        this.roter.navigateByUrl(`/admin/applicant/edit/${id}`)
+        this.roter.navigateByUrl(`/admin/applicant/detail/${id}`)
     }
 
-    onAdd() {
-        
-    }
 }

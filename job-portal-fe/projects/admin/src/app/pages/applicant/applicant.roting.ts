@@ -4,17 +4,23 @@ import { RouterModule, Routes } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { SharedModule } from "../../components/shared-module";
 import { ReactiveFormsModule } from "@angular/forms";
+import { ApplicantDetailComponent } from "./detail/applicant-detail.component";
 
 const routes : Routes = [
     {
         path : '',
         component : ApplicantListComponent
+    },
+    {
+        path : 'detail/:id',
+        component : ApplicantDetailComponent
     }
 ]
 
 @NgModule({
     declarations : [
-        ApplicantListComponent
+        ApplicantListComponent,
+        ApplicantDetailComponent
     ],
     imports : [
         RouterModule.forChild(routes),
@@ -24,7 +30,8 @@ const routes : Routes = [
     ],
     exports : [
         RouterModule,
-        ApplicantListComponent
+        ApplicantListComponent,
+        ApplicantDetailComponent
     ]
 })
 export class ApplicantRouting{

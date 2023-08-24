@@ -6,6 +6,7 @@ import { InsertResDto } from "../dto/insert.res.dto";
 import { BASE_URL_ADMIN } from "../constants/api.constant";
 import { UpdateResDto } from "../dto/update.res.dto";
 import { ApplicantsResDto } from "../dto/applicant/applicants.res.dto";
+import { ApplicantDetailResDto } from "../dto/applicant/applicant-detail.res.dto";
 
 @Injectable({
     providedIn : 'root'
@@ -30,4 +31,14 @@ export class ApplicantService{
     addToVacancy(request : ApplicantInsertReqDto) :Observable<InsertResDto> {
         return this.base.post<InsertResDto>(`${BASE_URL_ADMIN}/applicant`,request)
     } 
+
+    getApplicantDetail(applicantId:string) : Observable<ApplicantDetailResDto>{
+        return this.base.get<ApplicantDetailResDto>(`${BASE_URL_ADMIN}/applicant/${applicantId}`)
+    }
+
+    changeStage(applicantId : string) : Observable<UpdateResDto> {
+        return this.base.patch<UpdateResDto>(`${BASE_URL_ADMIN}/applicant/${applicantId}`, null)
+    }
+    
+    
 }

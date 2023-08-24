@@ -16,7 +16,7 @@
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-applicants let-rowIndex="rowIndex">
-                    <tr (click)="navigateToId(applicants.id)">
+                    <tr (click)="navigateToId(applicants.applicantId)">
                         <td>{{rowIndex+1}}</td>
                         <td>{{ applicants.candidateName }}</td>
                         <td>{{ applicants.candidateEmail }}</td>
