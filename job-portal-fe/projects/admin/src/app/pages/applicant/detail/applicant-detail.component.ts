@@ -8,6 +8,9 @@ import { ApplicantDetailResDto } from "../../../dto/applicant/applicant-detail.r
 import { AssessementService } from "../../../services/assessement.service";
 import { AssessmentResDto } from "../../../dto/assessement/assessment.res.dto";
 import { ConfirmationService, MenuItem } from "primeng/api";
+import { InterviewResDto } from "../../../dto/interview/interview.res.dto";
+import { NonNullableFormBuilder, Validators } from "@angular/forms";
+import { InterviewService } from "../../../services/interview.service";
 
 @Component({
     selector : 'applicant-detail',
@@ -20,15 +23,28 @@ export class ApplicantDetailComponent implements OnInit{
     candidate! : CandidateResDto
     assessment! : AssessmentResDto
     resumeMenuItems: MenuItem[] | undefined;
+    interview! : InterviewResDto
+    venues : String[] | undefined
+    interviewDate! : Date
+
+    stageApplication = false
+    stageAssessement = false
+    stageInterview = false
+    stageMcu = false
+    stageOffer = false
+
+    visible: boolean = false;
 
     constructor(
         private candidateService : CandidateService,
         private applicantService : ApplicantService,
         private assessementService : AssessementService,
+        private interviewService : InterviewService,
         private authService : AuthService,
         private activatedRoute : ActivatedRoute,
         private confirmationService : ConfirmationService,
-        private router : Router
+        private router : Router,
+        private fb: NonNullableFormBuilder
         )
         {}
 
@@ -47,11 +63,19 @@ export class ApplicantDetailComponent implements OnInit{
                     url : 'http://localhost:8080/admin/file/a6e54e96-be79-4bb9-98ff-5f59c33a0561',
                     target : '_self'
                 }            
-            ]                                                               
+            ]
+            this.venues = ["Online","Offline"]                                                               
         }else{
             console.log('Invalid')
         }
     }
+
+    interviewReqDto = this.fb.group({
+        applicantId : ['',Validators.required],
+        interviewVenue : ['',Validators.required],
+        interviewTime : ['',Validators.required],
+        interviewLocation : ['',Validators.required]
+    })
 
     getApplicantDetail(applicantId:string){
         this.applicantService.getApplicantDetail(applicantId).subscribe(result =>{
@@ -59,6 +83,8 @@ export class ApplicantDetailComponent implements OnInit{
             this.getCandidate(result.candidateId)
             if(result.assessment){
                 this.getAssessment(applicantId) 
+            }if(result.interview){
+                this.getInterview(applicantId);
             }              
             this.checkCurrentStage(result.currentStage)              
         })
@@ -73,6 +99,12 @@ export class ApplicantDetailComponent implements OnInit{
     getAssessment(applicantId:string){        
         this.assessementService.getAssessment(applicantId).subscribe(result=>{
             this.assessment = result
+        })
+    }
+
+    getInterview(applicantId:string){
+        this.interviewService.getInterview(applicantId).subscribe(result=>{
+            this.interview = result
         })
     }
 
@@ -98,18 +130,15 @@ export class ApplicantDetailComponent implements OnInit{
             }
         });
     }
-
-    visible: boolean = false;
-
+    
     insertInterviewModal() {
         this.visible = true;
+        this.interviewReqDto.patchValue({
+            applicantId : this.activatedRoute.snapshot.params["id"]
+        })
     }
 
-    stageApplication = false
-    stageAssessement = false
-    stageInterview = false
-    stageMcu = false
-    stageOffer = false
+
     
     checkCurrentStage(currentStage : string){
         if(currentStage == 'application'){
@@ -125,6 +154,22 @@ export class ApplicantDetailComponent implements OnInit{
             this. stageOffer = true
         }
     }
-
-
+    onSelectDate(){
+        this.interviewReqDto.patchValue({
+            interviewTime : this.interviewDate.toString()
+        })
+    }
+    onAddInterview(){
+        if(this.interviewReqDto.valid){
+            const data = this.interviewReqDto.getRawValue()
+            this.interviewService.insertInterview(data).subscribe(result =>{
+                console.log(result)
+                this.getApplicantDetail(data.applicantId)
+                this.interviewReqDto.reset()
+                this.stageAssessement = false
+                this.stageInterview = true
+                this.visible = false
+            })
+        }
+    }
 }
