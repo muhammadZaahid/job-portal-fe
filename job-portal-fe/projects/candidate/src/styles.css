@@ -34,4 +34,23 @@ body {
 	width: 100vw;
 }
 
+.p-card.job-list-card{
+	height : 16rem;
+	width: 25rem;	
+}
+
+.p-card.job-list-card-on-click{
+	border: 1px solid;
+	border-color: #0A4C86;
+	height : 16rem;
+	width: 25rem;	
+}
+
+:host ::ng-deep .p-card.job-list-card-on-click { 
+	border: 1px solid;
+	border-color: #0A4C86;
+	height : 16rem;
+	width: 25rem;
+  }
+
 

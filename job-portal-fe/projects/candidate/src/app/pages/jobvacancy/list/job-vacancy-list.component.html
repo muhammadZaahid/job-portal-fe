@@ -3,83 +3,79 @@
         <div class="grid">
             <div class="col-12 md:col-4">
                 <h3 class="p-3">Job List</h3>
-                <p-scrollPanel >
+                <p-scrollPanel [style]="{height : '50vw'}">
                     <div class="grid">
-                        <div class="col-12 mx-3 mt-2">
-                            <p-card subheader="Sales Engineer (Area: Jabodetabek)" >
-                                <ng-template pTemplate="header">
-                                    <img alt="Card"
-                                        src="https://corporate.acehardware.co.id/assets/img/logo-ace-hardware.png" />
-                                </ng-template>
-                                <p>
-                                    Ace Hardware Indonesia dimiliki oleh Grup Kawan Lama Sejahtera dan didirikan
-                                    pada bulan Januari 1995 dengan toko pertama dibuka di Supermall Karawaci,
-                                    Tangerang. Perusahaan ini mencatatkan saham perdananya di Bursa Efek
-                                    Indonesia pada November 2007
-                                </p>
-                            </p-card>
-                        </div>                        
+                        <div *ngFor="let j of jobVacancies; let i = index">
+                            <div class="col-12 md:col-12 mx-3 mt-2">
+                                <p-card [styleClass]="checkCard(j.id)" (click)="clickCard(i)">
+                                    <div class="flex flex-column">
+                                        <p-tag [value]="j.jobLevelName"></p-tag>
+                                        <span class="text-lg font-bold mt-3 md:mt-3">
+                                            {{j.title}}
+                                        </span>
+                                        <span class="text-base mt-3 md:mt-3">
+                                            {{j.companyName}}
+                                        </span>
+                                        <span class="text-base">
+                                            {{j.location}}
+                                        </span>
+                                        <span class="text-sm mt-3 md:mt-3 text-color-secondary {{getStartDate(j.startDate)}}">                                            
+                                            {{startDate}}
+                                        </span>
+                                        <span class="text-sm text-color-secondary {{getEndDate(j.endDate)}}">                                            
+                                            Apply before {{ endDate | date }}
+                                        </span>
+                                    </div>                                                                        
+                                </p-card>
+                            </div> 
+                        </div>                                               
                     </div>
                 </p-scrollPanel>
             </div>
-            <div class="col-12 md:col-8">
-                <h3 class="p-3">Job Detail</h3>
-                <div class="grid">
-                    <div class="col-12 md:col-4">
-                        <p-button label="Lamar Sekarang"></p-button>
-                    </div>
-                    <div class="col md:col-offset-7">
-                        <a href="" style="color: black;">Tutup</a>
-                    </div>
+            <ng-container *ngIf="isDetail">
+                <div class="col-12 md:col-8">                    
+                        <h3 class="p-3">Job Detail</h3>
+                        <div class="grid">
+                            <div class="col-12 md:col-4">
+                                <p-button label="Lamar Sekarang"></p-button>
+                            </div>
+                            <div class="col md:col-offset-7">
+                                <a href="" style="color: black;" (click)="isDetail = false">Tutup</a>
+                            </div>
+                        </div>
+                        <p-divider></p-divider>
+                        <p-scrollPanel>
+                            <ng-container *ngIf="jobVacancy">
+                                <!-- <div class="col-12 md:col-12">
+                                    <img style="height: 8rem; width: 50rem;"
+                                        src="https://cdn.shopify.com/s/files/1/0058/0291/7957/files/ace-hardware-banner-1400x500-highres.jpg?v=1663009512"
+                                        alt="">
+                                </div>
+                                <div class="col-12 md:col-12">
+                                    <img style="height: 3rem; width: 5rem;"
+                                        src="https://corporate.acehardware.co.id/assets/img/logo-ace-hardware.png" alt="">
+            
+                                </div> -->
+                                <div class="col-12 md:col-12">
+                                    <div class="flex flex-column">
+                                        <span class="text-lg font-bold">
+                                            {{jobVacancy.title}}
+                                        </span>
+                                        <span class="mt-3 md:mt-3">
+                                            {{jobVacancy.companyName}}
+                                        </span>
+                                        <span>{{jobVacancy.location}}</span>
+                                        <span class="mb-4 text-color-secondary">
+                                           Posted on : {{jobVacancy.startDate}}
+                                        </span>
+                                    </div>                                                                                    
+            
+                                    <p>Benefit : {{jobVacancy.benefitDesc}}</p>                                    
+                                </div>
+                            </ng-container>                            
+                        </p-scrollPanel>                    
                 </div>
-                <p-divider></p-divider>
-                <p-scrollPanel>
-                    <div class="col-12 md:col-12">
-                        <img style="height: 8rem; width: 50rem;"
-                            src="https://cdn.shopify.com/s/files/1/0058/0291/7957/files/ace-hardware-banner-1400x500-highres.jpg?v=1663009512"
-                            alt="">
-                    </div>
-                    <div class="col-12 md:col-12">
-                        <img style="height: 3rem; width: 5rem;"
-                            src="https://corporate.acehardware.co.id/assets/img/logo-ace-hardware.png" alt="">
-
-                    </div>
-                    <div class="col-12 md:col-12">
-                        <p>HR Staff</p>
-                        <p>Ace Hardware Indonesia Tbk</p>
-                        <p>Jakarta Pusat</p>
-                        <p class="mb-7">Ditayangkan 23 jam yang lalu</p>
-
-                        <p>Requirements : </p>
-                        <ul class="mb-7">
-                            <li>Minimal Bachelor Degree in Psychology</li>
-                            <li>Minimal 2 years of experience as HR & GA Staff </li>
-                            <li>Fresh graduate are welcome to apply</li>
-                            <li>Skills in Microsoft Office (Microsoft Excel, Words , Power Point)</li>
-                            <li>Proficiency in English written and oral would be a plus</li>
-                            <li>Honest, trustworthy, pleasant personality, having good interpersonal and communication
-                                skill, high discipline, motivation and responsible</li>
-                            <li>Good coordination and administrative skills, high accuracy</li>
-                            <li>Able to work independenly as well as working in team and willing to work under pressure
-                            </li>
-                        </ul>
-
-                        <p>Job Description : </p>
-                        <ul class="mb-7">
-                            <li>Responsible for record keeping of recruitment bank data and managing end to end process
-                                of recruitment – SIGN interview for OTC division including posting job ads until
-                                contract agreement.</li>
-                            <li>Coordinating with shortlisted candidate to complete psychology test and updating the
-                                scores for Head Office (supervisor level above) recruitment. </li>
-                            <li>Responsible for managing corporate official letters like handling outgoing Mega
-                                Lifesciences letter, internal memo, and HR letter (salary slip, contract letter,
-                                reference letter, SPG assignment letter, PKWT Letter, Terminate Letter, Warning Letter,
-                                Permanent Letter, All General Letter & All letter related to HR Department)</li>
-                            <li>Managing leave status of employee on Be1Have system.</li>
-                        </ul>
-                    </div>
-                </p-scrollPanel>
-            </div>
+            </ng-container>            
         </div>
     </div>
 </div>

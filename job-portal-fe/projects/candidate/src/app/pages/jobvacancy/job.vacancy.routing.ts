@@ -4,8 +4,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { CardModule } from 'primeng/card';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
-import { ButtonModule } from "primeng/button";
-import { DividerModule } from 'primeng/divider';
+import { SharedModule } from "../../components/shared-module";
 
 const routes : Routes = [
     {
@@ -23,8 +22,7 @@ const routes : Routes = [
         CommonModule,
         CardModule,
         ScrollPanelModule,
-        ButtonModule,
-        DividerModule
+        SharedModule
     ],
     exports : [
         RouterModule,

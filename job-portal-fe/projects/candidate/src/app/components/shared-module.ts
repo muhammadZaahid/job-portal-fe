@@ -12,6 +12,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MenuModule } from 'primeng/menu';
+import { TagModule } from 'primeng/tag';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { MenuModule } from 'primeng/menu';
         InputTextareaModule,
         DialogModule,
         ConfirmDialogModule,
-        MenuModule
+        MenuModule,
+        TagModule
     ],
     exports : [
         TableModule,
@@ -42,7 +44,8 @@ import { MenuModule } from 'primeng/menu';
         InputTextareaModule,
         DialogModule,
         ConfirmDialogModule,
-        MenuModule
+        MenuModule,
+        TagModule
     ]
 })
 export class SharedModule{
