@@ -19,8 +19,9 @@
                                 styleClass="p-button-sm p-button-success justify-content-center">
                                 <span class="text-xs font-bold">Move to Interview</span>
                             </p-button>
-                            <p-button *ngIf="stageInterview" [style]="{width: '10rem', height: '2.5rem'}"
-                                class="mt-2 md:mt-2" styleClass="p-button-sm p-button-success justify-content-center">
+                            <p-button *ngIf="stageInterview" (click)="confirmMoveToMcu()"
+                                [style]="{width: '10rem', height: '2.5rem'}" class="mt-2 md:mt-2"
+                                styleClass="p-button-sm p-button-success justify-content-center">
                                 <span class="text-xs font-bold">Move to MCU</span>
                             </p-button>
                             <p-button *ngIf="stageMcu" [style]="{width: '10rem', height: '2.5rem'}" class="mt-2 md:mt-2"
@@ -237,9 +238,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <p-divider></p-divider>
-                <div class="grid">
                     <div class="col-12 md:col-6">
                         <span class="font-bold text-base">Detail</span>
                         <p-divider></p-divider>
@@ -275,15 +273,63 @@
                         </div>
                     </div>
                 </div>
+                <p-divider></p-divider>
+            </ng-container>
+            <ng-container *ngIf="stageMcu">
+                <div class="grid" *ngIf="!hasMedical">
+                    <div class="col-12 md:col-6">
+                        <span class="font-bold text-lg">Medical</span>
+                    </div>
+                    <div class="col-12 md:col-6">
+                        <p-button type="submit" (click)="insertMedicalModal()" icon="pi pi-plus" label="Add Medical"
+                            styleClass="p-button-primary p-button-sm"></p-button>
+                    </div>
+                </div>
+                <div class="grid" *ngIf="hasMedical">
+                    <div class="col-12 md:col-12">
+                        <span class="font-bold text-lg">Medical</span>
+                    </div>
+                </div>
+                <p-divider></p-divider>
+                <div class="grid" *ngIf="hasMedical">
+                    <div class="col-12 md:col-6">
+                        <span class="font-bold text-base">Detail</span>
+                        <p-divider></p-divider>
+                        <div class="grid">
+                            <div class="col-12 md:col-3">
+                                <Label>Location</Label>
+                            </div>
+                            <div class="col-12 md:col-7">
+                                <input disabled [value]="medical.medicalLocation" class="p-inputtext-sm" pInputText
+                                    type="text">
+                            </div>
+                            <div class="col-12 md:col-3">
+                                <Label>Date</Label>
+                            </div>
+                            <div class="col-12 md:col-7">
+                                <input [value]="medical.medicalDate" disabled class="p-inputtext-sm" pInputText
+                                    type="text">
+                            </div>
+                            <div class="col-12 md:col-3">
+                                <Label>Notes</Label>
+                            </div>
+                            <div class="col-12 md:col-7">
+                                <input [value]="medical.medicalNotes" disabled class="p-inputtext-sm" pInputText
+                                    type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p-divider></p-divider>
             </ng-container>
         </p-card>
     </div>
 </div>
 
 <!-- Insert Interview Modal -->
-<p-dialog header="Move to Interview"  [style]="{width: '50vw'}" [(visible)]="visible" [modal]="true" [draggable]="false"
+<p-dialog header="Move to Interview" [style]="{width: '50vw'}" [(visible)]="visible" [modal]="true" [draggable]="false"
     [resizable]="false">
-    <form [formGroup]="interviewReqDto" (ngSubmit) = onAddInterview()>
+    <form [formGroup]="interviewReqDto" (ngSubmit)=onAddInterview()>
         <div class="grid">
             <div class="col-12 md:col-3">
                 <Label>Interview Venue</Label>
@@ -295,19 +341,61 @@
                 <Label>Interview Location</Label>
             </div>
             <div class="col-12 md:col-9">
-                <input formControlName="interviewLocation" class="p-inputtext-sm"
-                    pInputText type="text">
+                <input formControlName="interviewLocation" class="p-inputtext-sm" pInputText type="text">
             </div>
             <div class="col-12 md:col-3">
                 <Label>Interview Date</Label>
             </div>
             <div class="col-12 md:col-9">
-                <p-calendar formControlName="interviewTime" dataType="string" [(ngModel)]="interviewDate" (onSelect)="onSelectDate()" appendTo="body" dateFormat="yy-mm-dd" [showTime]="true"></p-calendar>
+                <p-calendar formControlName="interviewTime" dataType="string" [(ngModel)]="interviewDate"
+                    (onSelect)="onSelectDate()" appendTo="body" dateFormat="yy-mm-dd" [showTime]="true"></p-calendar>
             </div>
             <div class="flex flex-row-reverse">
-                <p-button type="submit" icon="pi pi-plus" label="Submit" styleClass="p-button-primary p-button-sm"></p-button>
+                <p-button type="submit" icon="pi pi-plus" label="Submit"
+                    styleClass="p-button-primary p-button-sm"></p-button>
             </div>
         </div>
     </form>
     <pre>{{interviewReqDto.value | json}}</pre>
+</p-dialog>
+<p-dialog header="Insert Medical" [style]="{width: '50vw'}" [(visible)]="medicalVisible" [modal]="true"
+    [draggable]="false" [resizable]="false">
+    <form [formGroup]="medicalReqDto" (ngSubmit)=onAddMedical()>
+        <div class="grid">
+            <div class="col-12 md:col-3">
+                <Label>Medical Location</Label>
+            </div>
+            <div class="col-12 md:col-9">
+                <input formControlName="medicalLocation" class="p-inputtext-sm" pInputText type="text">
+            </div>
+            <div class="col-12 md:col-3">
+                <Label>Medical Date</Label>
+            </div>
+            <div class="col-12 md:col-9">
+                <p-calendar formControlName="medicalDate" dataType="string" [(ngModel)]="medicalDate"
+                    (onSelect)="onSelectDate()" appendTo="body" dateFormat="yy-mm-dd" [showTime]="false"></p-calendar>
+            </div>
+            
+            <div class="col-12 md:col-3">
+                <Label>Medical Notes</Label>
+            </div>
+            <div class="col-12 md:col-9">
+                <input formControlName="medicalNotes" class="p-inputtext-sm" pInputText type="text">
+            </div>
+            <div class="col-12 md:col-3">
+                <Label>Medical File</Label>
+            </div>
+            <div class="col-12 md:col-9">
+                <div class="col-12 md:col-7">
+                    <p-fileUpload mode="basic" [auto]="true" chooseLabel="Browse" #file
+                        (onSelect)="fileUploadMedical($event,file)"></p-fileUpload>
+                </div>
+            </div>
+            <div class="flex flex-row-reverse">
+                <p-button type="submit" icon="pi pi-plus" label="Submit"
+                    styleClass="p-button-primary p-button-sm"></p-button>
+            </div>
+        </div>
+    </form>
+    <pre>{{medicalReqDto.value | json}}</pre>
 </p-dialog>
