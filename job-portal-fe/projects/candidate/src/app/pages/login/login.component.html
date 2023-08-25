@@ -1,0 +1,21 @@
+<pre>{{loginReqDto.value | json}}</pre>
+<div class="grid mt-8">    
+    <div class="col-12 flex align-items-center justify-content-center">
+        <form [formGroup]="loginReqDto" (ngSubmit)="onLogin()">
+            <p-card>
+                <div class="p-fluid">
+                    <div class="field">
+                        <label for="username">Username</label>
+                        <input pInputText id="username" type="text" formControlName="email" />
+                    </div>
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input pInputText id="password" type="password" formControlName="password" />
+                    </div>
+                    <p-button *ngIf="!loading" type="submit" label="Login" [disabled]="loginReqDto.invalid"></p-button>
+                    <p-button *ngIf="loading" type="button" label="Login" [loading]="loading" ></p-button>
+                </div>
+            </p-card>
+        </form>        
+    </div>
+</div>

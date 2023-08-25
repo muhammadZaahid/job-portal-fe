@@ -7,6 +7,8 @@ import { ButtonModule } from "primeng/button";
 import { InputTextModule } from "primeng/inputtext";
 import { CardModule } from "primeng/card";
 import { ReactiveFormsModule } from "@angular/forms";
+import { LoginComponent } from "./pages/login/login.component";
+import { authValidationLogin } from "./validation/auth.validation";
 
 
 const routes : Routes = [ 
@@ -24,12 +26,23 @@ const routes : Routes = [
         component : BaseComponent,
         path : 'candidate/application',
         loadChildren : () => import('./pages/application/application.module').then(a => a.ApplicationModule)
+    },
+    {
+        path : 'login',
+        children : [
+            {
+                path : '',
+                component : LoginComponent,   
+                canMatch : [authValidationLogin]             
+            }
+        ]
     }
 
 ]
 
 @NgModule({
     declarations: [
+        LoginComponent
     ],
     imports : [
         RouterModule.forRoot(routes),
@@ -42,7 +55,6 @@ const routes : Routes = [
     ],
     exports : [
         RouterModule,
-        CommonModule,
         CommonModule,
     ]
 })
