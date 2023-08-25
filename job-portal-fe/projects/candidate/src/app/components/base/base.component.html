@@ -1,7 +1,17 @@
 <div class="relative">
-    <div class="fixed z-1">
-        <app-navbar>
-        </app-navbar>
+    <div class="grid mb-5 md:mb-5">
+        <div class="col-12 md:col-12">
+            <div class="fixed z-1">
+                <app-navbar>
+                </app-navbar>
+            </div>
+        </div>        
     </div>
-    <router-outlet></router-outlet>
+    <div class="grid">
+        <div class="col-12 md:col-12 ">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+
 </div>
