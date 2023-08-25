@@ -15,6 +15,7 @@ import { MedicalService } from "../../../services/medical.service";
 import { MedicalResDto } from "../../../dto/medical/medical.res.dto";
 import { FileReqDto } from "../../../dto/file/file.req.dto";
 import { FileUpload } from "primeng/fileupload";
+import { OfferService } from "../../../services/offer.service";
 
 @Component({
     selector: 'applicant-detail',
@@ -41,8 +42,9 @@ export class ApplicantDetailComponent implements OnInit {
     stageOffer = false
     hasMedical = false
 
-    visible: boolean = false;
+    visible: boolean = false
     medicalVisible = false
+    offerVisible = false
 
     constructor(
         private candidateService: CandidateService,
@@ -50,6 +52,7 @@ export class ApplicantDetailComponent implements OnInit {
         private assessementService: AssessementService,
         private interviewService: InterviewService,
         private medicalService: MedicalService,
+        private offerService: OfferService,
         private authService: AuthService,
         private activatedRoute: ActivatedRoute,
         private confirmationService: ConfirmationService,
@@ -100,8 +103,14 @@ export class ApplicantDetailComponent implements OnInit {
         medicalFile: this.fileReqDto
     })
 
+    offeringReqDto = this.fb.group({
+        applicantId: ['',Validators.required],
+        offerSalary: [0,Validators.required]
+    })
+
     getApplicantDetail(applicantId: string) {
         this.applicantService.getApplicantDetail(applicantId).subscribe(result => {
+            console.log(result)
             this.applicantDetail = result
             this.getCandidate(result.candidateId)
             if (result.assessment) {
@@ -184,6 +193,12 @@ export class ApplicantDetailComponent implements OnInit {
         })
     }
 
+    insertOfferModal(){
+        this.offerVisible = true
+        this.offeringReqDto.patchValue({
+            applicantId: this.activatedRoute.snapshot.params["id"]
+        })
+    }
 
     checkCurrentStage(currentStage: string) {
         if (currentStage == 'application') {
@@ -196,7 +211,6 @@ export class ApplicantDetailComponent implements OnInit {
         } else if (currentStage == 'mcu') {
             this.stageMcu = true
         } else if (currentStage == 'offer') {
-            this.stageMcu = true
             this.stageOffer = true
         }
     }
@@ -237,6 +251,29 @@ export class ApplicantDetailComponent implements OnInit {
         }
     }
 
+    onAddOffer() {
+        if (this.offeringReqDto.valid) {
+            const data = this.offeringReqDto.getRawValue()
+            this.offerService.insertOffer(data).subscribe({
+                next: (result) => {
+                    this.offeringReqDto.reset()
+                    this.offerVisible = false
+                    this.updateApplicant(data.applicantId)
+                },
+                error: () => {
+                    this.offeringReqDto.reset()
+                    this.offerVisible = false
+                }
+            })
+        }
+    }
+
+    updateApplicant(applicantId : string){
+        this.applicantService.updateApplicant(applicantId).subscribe(result =>{
+            this.getApplicantDetail(applicantId);
+        })
+    }
+
     confirmMoveToMcu() {
         const applicantId = this.activatedRoute.snapshot.params['id']
         this.confirmationService.confirm({
@@ -253,6 +290,7 @@ export class ApplicantDetailComponent implements OnInit {
             }
         });
     }
+    
     fileUploadMedical(event: any, fileM: FileUpload) {
 
         const toBase64 = (file: File) => new Promise<string>((resolve, reject) => {
