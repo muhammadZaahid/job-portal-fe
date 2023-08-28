@@ -5,6 +5,7 @@ export interface JobVacancyUpdateReqDto {
     jobLevelId : string
     location : string
     benefitDesc : string
+    jobDesc : string
     salaryFrom : number
     salaryTo : number
     salaryPublish : boolean

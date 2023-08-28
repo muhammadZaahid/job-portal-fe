@@ -23,17 +23,18 @@ export class JobVacancyCreateComponent implements OnInit{
     selectedUser! : UsersResDto
 
     jobVacancyInsertReqDto = this.fb.group({
-        title: ['', [Validators.required]],
-        picId: [''],
-        companyId: [''],
-        jobLevelId: [''],
-        location: [''],
-        benefitDesc: [''],
-        salaryFrom: [0],
-        salaryTo: [0],
-        salaryPublish: [false],
-        startDate: [''],
-        endDate: ['']
+        title: ['',Validators.required],
+        picId: ['',Validators.required],
+        companyId: ['',Validators.required],
+        jobLevelId: ['',Validators.required],
+        location: ['',Validators.required],
+        benefitDesc: ['',Validators.required],
+        salaryFrom: [0,Validators.required],
+        salaryTo: [0,Validators.required],
+        salaryPublish: [false,Validators.required],
+        startDate: ['',Validators.required],
+        endDate: ['',Validators.required],
+        jobDesc: ['',Validators.required]
     })
 
     constructor(

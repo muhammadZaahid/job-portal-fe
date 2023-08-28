@@ -122,6 +122,22 @@
                         </div>
                     </div>
                 </div>
+                <p-divider></p-divider>
+                <div class="grid">
+                    <div class="col-12 md:col-3">
+                        <label>Job Description</label>
+                    </div>
+                    <div class="col-12 md:col-9">
+                        <textarea pInputTextarea class="p-inputtext-sm" formControlName="jobDesc" [style]="{height : '18rem', width: '40rem'}"></textarea>
+                    </div>
+                    <div class="col-12 md:col-3">
+                        <Label>Benefit</Label>
+                    </div>
+                    <div class="col-12 md:col-9">
+                        <textarea formControlName="benefitDesc" class="p-inputtext-sm" [style]="{height : '18rem', width: '40rem'}"
+                            pInputTextarea></textarea>
+                    </div>
+                </div>
             </form>
         </p-card>
         <pre>{{jobVacancyUpdateReqDto.value | json}}</pre>

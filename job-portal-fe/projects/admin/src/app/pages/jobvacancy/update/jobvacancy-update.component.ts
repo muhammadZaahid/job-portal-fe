@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { JobVacancyService } from "../../../services/job.vacancy.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { NonNullableFormBuilder } from "@angular/forms";
+import { NonNullableFormBuilder, Validators } from "@angular/forms";
 import { CompanyResDto } from "../../../dto/company/company.res.dto";
 import { JobLevelResDto } from "../../../dto/joblevel/job-level.res.dto";
 import { UsersResDto } from "../../../dto/user/users.res.dto";
@@ -30,6 +30,7 @@ export class JobVacancyUpdateComponent implements OnInit{
         jobLevelId: [''],
         location: [''],
         benefitDesc: [''],
+        jobDesc: ['',Validators.required],
         salaryFrom: [0],
         salaryTo: [0],
         salaryPublish: [false],
@@ -95,6 +96,7 @@ export class JobVacancyUpdateComponent implements OnInit{
                 jobLevelId : result.jobLevelId,
                 location : result.location,
                 benefitDesc : result.benefitDesc,
+                jobDesc : result.jobDesc,
                 salaryFrom : result.salaryFrom,
                 salaryTo : result.salaryTo,
                 salaryPublish : result.salaryPublish,
