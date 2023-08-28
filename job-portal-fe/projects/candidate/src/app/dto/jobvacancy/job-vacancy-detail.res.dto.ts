@@ -8,6 +8,7 @@ export interface JobVacancyDetailResDto {
     startDate : string
     endDate : string
     benefitDesc : string
+    jobDesc : string
     salaryPublish : boolean
     SalaryFrom : number
     SalaryTo : number

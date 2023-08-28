@@ -3,6 +3,9 @@ import { JobVacancyResDto } from "../../../dto/jobvacancy/job-vacancy.res.dto";
 import { AuthService } from "../../../services/auth.service";
 import { JobVacancyService } from "../../../services/job.vacancy.service";
 import { JobVacancyDetailResDto } from "../../../dto/jobvacancy/job-vacancy-detail.res.dto";
+import { ApplicantService } from "../../../services/applicant.service";
+import { ApplicantInsertReqDto } from "../../../dto/applicant/applicant-insert.req.dto";
+import { NonNullableFormBuilder } from "@angular/forms";
 
 @Component({
     selector: 'job-vacancy-list',
@@ -18,9 +21,15 @@ export class JobVacancyListComponent implements OnInit {
 
     constructor(
         private authService: AuthService,
-        private jobVacancyService: JobVacancyService
-
+        private jobVacancyService : JobVacancyService,
+        private applicantService : ApplicantService,
+        private fb : NonNullableFormBuilder
     ) { }
+
+    applicantInsertReq = this.fb.group({
+        candidateId : [''],
+        jobVacancyId : ['']
+    })
 
     ngOnInit() {
         const profile = this.authService.getProfile()
@@ -37,10 +46,27 @@ export class JobVacancyListComponent implements OnInit {
     }
 
     getJobVacancy(jobVacancyId : string){
+        const candidateId = this.authService.getProfile()!.candidateId
         this.jobVacancyService.getJobVacancy(jobVacancyId).subscribe(result =>{
             this.jobVacancy = result
+            console.log(result)
+            this.applicantInsertReq.patchValue({
+                candidateId : candidateId,
+                jobVacancyId : jobVacancyId
+            })
         })
     }
+
+    applyJob(){
+        if(this.applicantInsertReq.valid){
+
+            const request = this.applicantInsertReq.getRawValue()
+            
+            this.applicantService.applyJob(request).subscribe(result =>{
+                console.log(result)
+            })
+        }
+    } 
 
     getEndDate(date: string) {
         return this.endDate = new Date(date)

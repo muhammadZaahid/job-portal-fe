@@ -5,6 +5,7 @@ import { CommonModule } from "@angular/common";
 import { CardModule } from 'primeng/card';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { SharedModule } from "../../components/shared-module";
+import { ReactiveFormsModule } from "@angular/forms";
 
 const routes : Routes = [
     {
@@ -22,7 +23,8 @@ const routes : Routes = [
         CommonModule,
         CardModule,
         ScrollPanelModule,
-        SharedModule
+        SharedModule,
+        ReactiveFormsModule
     ],
     exports : [
         RouterModule,

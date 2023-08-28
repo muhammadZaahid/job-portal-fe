@@ -33,16 +33,19 @@
                 </p-scrollPanel>
             </div>
             <ng-container *ngIf="isDetail">
-                <div class="col-12 md:col-8">                    
+                <div class="col-12 md:col-8">                                
                         <h3 class="p-3">Job Detail</h3>
-                        <div class="grid">
-                            <div class="col-12 md:col-4">
-                                <p-button label="Lamar Sekarang"></p-button>
+                        <form [formGroup]="applicantInsertReq" (ngSubmit)="applyJob()">
+                            <div class="grid">
+                                <div class="col-12 md:col-4">
+                                    <p-button type="submit" label="Lamar Sekarang"></p-button>
+                                </div>
+                                <div class="col md:col-offset-7">
+                                    <a href="" style="color: black;" (click)="isDetail = false">Tutup</a>
+                                </div>
                             </div>
-                            <div class="col md:col-offset-7">
-                                <a href="" style="color: black;" (click)="isDetail = false">Tutup</a>
-                            </div>
-                        </div>
+                        </form>
+                        
                         <p-divider></p-divider>
                         <p-scrollPanel>
                             <ng-container *ngIf="jobVacancy">
@@ -68,10 +71,18 @@
                                         <span class="mb-4 text-color-secondary">
                                            Posted on : {{jobVacancy.startDate}}
                                         </span>
-                                    </div>                                                                                    
-            
-                                    <p>Benefit : {{jobVacancy.benefitDesc}}</p>                                    
+                                    </div>                                                                                                                                                          
+                                    
+                                    <span class="text-base font-bold">Job Description : </span>
+                                    <p style="white-space:pre-wrap;">
+                                        {{jobVacancy.jobDesc}}
+                                    </p>
+
+                                    <span class="text-base font-bold">Benefit : </span>
+                                    <p>{{jobVacancy.benefitDesc}}</p>  
                                 </div>
+                                <pre>{{applicantInsertReq.value | json}}</pre>
+
                             </ng-container>                            
                         </p-scrollPanel>                    
                 </div>
