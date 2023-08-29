@@ -12,4 +12,5 @@ export interface JobVacancyDetailResDto {
     salaryPublish : boolean
     SalaryFrom : number
     SalaryTo : number
+    hasApplied : boolean
 }
