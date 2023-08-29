@@ -16,6 +16,7 @@ import { MedicalResDto } from "../../../dto/medical/medical.res.dto";
 import { FileReqDto } from "../../../dto/file/file.req.dto";
 import { FileUpload } from "primeng/fileupload";
 import { OfferService } from "../../../services/offer.service";
+import { OfferingResDto } from "../../../dto/offer/offering.res.dto";
 
 @Component({
     selector: 'applicant-detail',
@@ -30,6 +31,7 @@ export class ApplicantDetailComponent implements OnInit {
     resumeMenuItems: MenuItem[] | undefined
     interview!: InterviewResDto
     medical!: MedicalResDto
+    offers!: OfferingResDto
     venues: String[] | undefined
     interviewDate!: Date
     medicalDate!: Date
@@ -122,6 +124,9 @@ export class ApplicantDetailComponent implements OnInit {
             if (result.mcu) {
                 this.getMedical(applicantId)
             }
+            if (result.offer){
+                this.getOffer(applicantId)
+            }
             this.checkCurrentStage(result.currentStage)
         })
     }
@@ -153,6 +158,12 @@ export class ApplicantDetailComponent implements OnInit {
             error: () => {
                 this.hasMedical = false
             }
+        })
+    }
+
+    getOffer(applicantId: string){
+        this.offerService.getOffer(applicantId).subscribe(result =>{
+            this.offers = result;
         })
     }
 
@@ -284,6 +295,22 @@ export class ApplicantDetailComponent implements OnInit {
                 this.changeStage(applicantId)
                 this.getApplicantDetail(applicantId)
                 this.stageInterview = false
+            },
+            reject: () => {
+
+            }
+        });
+    }
+    confirmMoveToHired() {
+        const applicantId = this.activatedRoute.snapshot.params['id']
+        this.confirmationService.confirm({
+            message: 'Are you sure that you want to proceed?',
+            header: 'Confirm Move to Hired',
+            icon: 'pi pi-exclamation-triangle',
+            accept: () => {
+                this.changeStage(applicantId)
+                this.getApplicantDetail(applicantId)
+                this.stageOffer = false
             },
             reject: () => {
 
