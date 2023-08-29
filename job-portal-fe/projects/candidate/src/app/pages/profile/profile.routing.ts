@@ -12,6 +12,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { FileUploadModule } from 'primeng/fileupload';
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 const routes : Routes = [
@@ -41,7 +42,8 @@ const routes : Routes = [
         InputTextModule,
         CalendarModule,
         KeyFilterModule,
-        FileUploadModule
+        FileUploadModule,
+        ReactiveFormsModule
 
     ],
     exports : [
