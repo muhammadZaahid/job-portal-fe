@@ -14,6 +14,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MenuModule } from 'primeng/menu';
 import { TagModule } from 'primeng/tag';
 import { KeyFilterModule } from 'primeng/keyfilter';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 @NgModule({
     imports : [
@@ -30,7 +31,8 @@ import { KeyFilterModule } from 'primeng/keyfilter';
         ConfirmDialogModule,
         MenuModule,
         TagModule,
-        KeyFilterModule
+        KeyFilterModule,
+        InputSwitchModule
     ],
     exports : [
         TableModule,
@@ -47,7 +49,8 @@ import { KeyFilterModule } from 'primeng/keyfilter';
         ConfirmDialogModule,
         MenuModule,
         TagModule,
-        KeyFilterModule
+        KeyFilterModule,
+        InputSwitchModule
     ]
 })
 export class SharedModule{

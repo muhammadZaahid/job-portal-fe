@@ -22,54 +22,34 @@
                                     <Label>PIC</Label>
                                 </div>
                                 <div class="col-12 md:col-9">
-                                    <p-dropdown
-                                        [filter]="true"
-                                        fileterBy="fullname"
-                                        styleClass="custom-dropdown"
-                                        formControlName="picId"
-                                        [options]="users"
-                                        [(ngModel)]="selectedUser"
-                                        optionLabel="fullname"
-                                        optionValue="id"
-                                    >                                        
+                                    <p-dropdown [filter]="true" fileterBy="fullname" styleClass="custom-dropdown"
+                                        formControlName="picId" [options]="users" [(ngModel)]="selectedUser"
+                                        optionLabel="fullname" optionValue="id">
                                     </p-dropdown>
                                 </div>
                                 <div class="col-12 md:col-3">
                                     <Label>Company</Label>
                                 </div>
                                 <div class="col-12 md:col-9">
-                                    <p-dropdown 
-                                        [filter]="true" 
-                                        filterBy="companyName" 
-                                        styleClass="custom-dropdown"
-                                        formControlName="companyId" 
-                                        [options]="companies" 
-                                        [(ngModel)]="selectedCompany"
-                                        optionLabel="companyName" 
-                                        optionValue="id"
-                                        >                                        
-                                    </p-dropdown>                                    
+                                    <p-dropdown [filter]="true" filterBy="companyName" styleClass="custom-dropdown"
+                                        formControlName="companyId" [options]="companies" [(ngModel)]="selectedCompany"
+                                        optionLabel="companyName" optionValue="id">
+                                    </p-dropdown>
                                 </div>
                                 <div class="col-12 md:col-3">
                                     <Label>Job Level</Label>
                                 </div>
                                 <div class="col-12 md:col-7">
-                                    <p-dropdown                                     
-                                    styleClass="custom-dropdown"
-                                    formControlName="jobLevelId" 
-                                    [options]="jobLevels" 
-                                    [(ngModel)]="selectedJobLevel"
-                                    optionLabel="jobLevelName" 
-                                    optionValue="id"
-                                    >                                        
-                                    </p-dropdown>     
+                                    <p-dropdown styleClass="custom-dropdown" formControlName="jobLevelId"
+                                        [options]="jobLevels" [(ngModel)]="selectedJobLevel" optionLabel="jobLevelName"
+                                        optionValue="id">
+                                    </p-dropdown>
                                 </div>
                                 <div class="col-12 md:col-3">
                                     <Label>Location</Label>
                                 </div>
                                 <div class="col-12 md:col-9">
-                                    <input formControlName="location" class="p-inputtext-sm" pInputText
-                                        type="text">
+                                    <input formControlName="location" class="p-inputtext-sm" pInputText type="text">
                                 </div>
                             </div>
                         </div>
@@ -81,7 +61,8 @@
                                     <Label>Salary From</Label>
                                 </div>
                                 <div class="col-12 md:col-7">
-                                    <input formControlName="salaryFrom" class="p-inputtext-sm" pKeyFilter="int" pInputText type="text">
+                                    <input formControlName="salaryFrom" class="p-inputtext-sm" pKeyFilter="int"
+                                        pInputText type="text">
                                 </div>
                                 <div class="col-12 md:col-3">
                                     <Label>Salary To</Label>
@@ -121,14 +102,40 @@
                         <label>Job Description</label>
                     </div>
                     <div class="col-12 md:col-9">
-                        <textarea pInputTextarea class="p-inputtext-sm" formControlName="jobDesc" [style]="{height : '18rem', width: '40rem'}"></textarea>
+                        <textarea pInputTextarea class="p-inputtext-sm" formControlName="jobDesc"
+                            [style]="{height : '40vh', width: '47vw'}"></textarea>
                     </div>
                     <div class="col-12 md:col-3">
                         <Label>Benefit</Label>
                     </div>
                     <div class="col-12 md:col-9">
-                        <textarea formControlName="benefitDesc" class="p-inputtext-sm" [style]="{height : '18rem', width: '40rem'}"
-                            pInputTextarea></textarea>
+                        <textarea formControlName="benefitDesc" class="p-inputtext-sm"
+                            [style]="{height : '40vh', width: '47vw'}" pInputTextarea></textarea>
+                    </div>
+                </div>
+                <p-divider></p-divider>
+                <div class="grid">
+                    <div class="col-12 md:col-3">
+                        <Label>Assessment</Label>
+                    </div>
+                    <div class="col-12 md:col-9">
+                        <p-inputSwitch 
+                        (click)="hasAssessment = !hasAssessment"
+                        (click)="checkHasAssessment()"
+                        ></p-inputSwitch>
+                    </div>
+                    <div *ngIf="hasAssessment" class="col-12 md:col-9 md:col-offset-3">
+                        <p-dropdown 
+                            optionLabel="name" 
+                            [style]="{height : '3rem', width: '47vw'}" 
+                            [filter]="true"
+                            fileterBy="topicName" 
+                            formControlName="topicId" 
+                            [options]="topics"
+                            [(ngModel)]="selectedTopic" 
+                            optionLabel="topicName" 
+                            optionValue="topicId">
+                        </p-dropdown>
                     </div>
                 </div>
             </form>

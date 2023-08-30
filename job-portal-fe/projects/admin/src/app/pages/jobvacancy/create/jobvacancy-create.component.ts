@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { NonNullableFormBuilder, Validators } from "@angular/forms";
+import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { JobVacancyService } from "../../../services/job.vacancy.service";
 import { CompanyResDto } from "../../../dto/company/company.res.dto";
@@ -8,6 +8,8 @@ import { JobLevelResDto } from "../../../dto/joblevel/job-level.res.dto";
 import { JobLevelService } from "../../../services/job.level.service";
 import { UsersResDto } from "../../../dto/user/users.res.dto";
 import { UserService } from "../../../services/user.service";
+import { QuestionTopicResDto } from "../../../dto/question/question-topic.res.dto";
+import { QuestionService } from "../../../services/question.service";
 
 @Component({
     selector: 'jobvacancy-create',
@@ -18,9 +20,12 @@ export class JobVacancyCreateComponent implements OnInit{
     companies : CompanyResDto[] = []
     jobLevels : JobLevelResDto[] = []
     users : UsersResDto[] = []
+    topics : QuestionTopicResDto[] = []
     selectedCompany! : CompanyResDto    
     selectedJobLevel! : JobLevelResDto
     selectedUser! : UsersResDto
+    selectedTopic! : QuestionTopicResDto
+    hasAssessment = false
 
     jobVacancyInsertReqDto = this.fb.group({
         title: ['',Validators.required],
@@ -34,7 +39,8 @@ export class JobVacancyCreateComponent implements OnInit{
         salaryPublish: [false,Validators.required],
         startDate: ['',Validators.required],
         endDate: ['',Validators.required],
-        jobDesc: ['',Validators.required]
+        jobDesc: ['',Validators.required],
+        topicId:['',Validators.required]
     })
 
     constructor(
@@ -42,6 +48,7 @@ export class JobVacancyCreateComponent implements OnInit{
         private companyService : CompanyService,
         private jobLevelService : JobLevelService,
         private userService : UserService,
+        private questionService : QuestionService,
         private router: Router,
         private fb: NonNullableFormBuilder
     ) {}
@@ -49,7 +56,8 @@ export class JobVacancyCreateComponent implements OnInit{
     ngOnInit(): void {
         this.getCompanies()
         this.getJobLevels()
-        this.getPicList()
+        this.getPicList()   
+        this.getTopics()          
     }
 
     onAdd() {
@@ -82,6 +90,12 @@ export class JobVacancyCreateComponent implements OnInit{
         })
     }
 
+    getTopics(){
+        this.questionService.getTopics().subscribe(result=>{
+            this.topics = result
+        })
+    }
+
     formatDate(event: any): string {
         const toString = (date: number, padLength: number): string => {
             return date.toString().padStart(padLength, '0');
@@ -109,5 +123,9 @@ export class JobVacancyCreateComponent implements OnInit{
         });
     }
     
-    
+    checkHasAssessment(){
+        if(this.hasAssessment === false){
+            this.jobVacancyInsertReqDto.reset()
+        }
+    }
 }

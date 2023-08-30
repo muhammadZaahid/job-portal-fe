@@ -4,7 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { JobVacancyListComponent } from "./list/jobvacancy-list.component";
 import { SharedModule } from "../../components/shared-module";
 import { JobVacancyCreateComponent } from "./create/jobvacancy-create.component";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { JobVacancyUpdateComponent } from "./update/jobvacancy-update.component";
 
 const routes : Routes = [
@@ -33,6 +33,7 @@ const routes : Routes = [
         CommonModule,
         SharedModule,
         ReactiveFormsModule,
+        FormsModule,
         ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
     ],
     exports : [
