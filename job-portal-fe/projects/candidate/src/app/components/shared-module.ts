@@ -13,7 +13,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MenuModule } from 'primeng/menu';
 import { TagModule } from 'primeng/tag';
-
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @NgModule({
     imports : [
@@ -29,7 +29,8 @@ import { TagModule } from 'primeng/tag';
         DialogModule,
         ConfirmDialogModule,
         MenuModule,
-        TagModule
+        TagModule,
+        RadioButtonModule
     ],
     exports : [
         TableModule,
@@ -45,7 +46,8 @@ import { TagModule } from 'primeng/tag';
         DialogModule,
         ConfirmDialogModule,
         MenuModule,
-        TagModule
+        TagModule,
+        RadioButtonModule
     ]
 })
 export class SharedModule{
