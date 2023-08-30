@@ -28,6 +28,10 @@ export class ApplicantService{
         return this.base.get<ApplicantsResDto[]>(`${BASE_URL_ADMIN}/applicant`,true)
     }
 
+    getApplicantsWithParams(page : number, limit : number) : Observable<ApplicantsResDto[]>{
+        return this.base.get<ApplicantsResDto[]>(`${BASE_URL_ADMIN}/applicant?page=${page}&limit=${limit}`)
+    }
+
     addToVacancy(request : ApplicantInsertReqDto) :Observable<InsertResDto> {
         return this.base.post<InsertResDto>(`${BASE_URL_ADMIN}/applicant`,request)
     } 

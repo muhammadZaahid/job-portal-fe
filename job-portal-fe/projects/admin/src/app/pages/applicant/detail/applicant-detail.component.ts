@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { CandidateResDto } from "../../../dto/candidate/candidate.res.dto";
 import { CandidateService } from "../../../services/candidate.service";
 import { AuthService } from "../../../services/auth.service";
@@ -36,6 +36,7 @@ export class ApplicantDetailComponent implements OnInit {
     interviewDate!: Date
     medicalDate!: Date
     file!: FileReqDto
+    imageUrl! : string
 
     stageApplication = false
     stageAssessement = false
@@ -59,7 +60,8 @@ export class ApplicantDetailComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
         private confirmationService: ConfirmationService,
         private router: Router,
-        private fb: NonNullableFormBuilder
+        private fb: NonNullableFormBuilder,
+        private cd: ChangeDetectorRef
     ) { }
 
     ngOnInit(): void {
@@ -79,7 +81,6 @@ export class ApplicantDetailComponent implements OnInit {
                 }
             ]
             this.venues = ["Online", "Offline"]
-            console.log(`stageMcu : ${this.stageMcu}`)
         } else {
             console.log('Invalid')
         }
@@ -128,24 +129,38 @@ export class ApplicantDetailComponent implements OnInit {
                 this.getOffer(applicantId)
             }
             this.checkCurrentStage(result.currentStage)
+            this.cd.detectChanges()
         })
+    }
+
+    get appDetails(){
+        return (this.applicantDetail)
+    }
+
+    get stagesMcu(){
+        return (this.applicantDetail && this.applicantDetail.mcu) ? this.applicantDetail.mcu : null
     }
 
     getCandidate(candidateId: string) {
         this.candidateService.getCandidate(candidateId).subscribe(result => {
             this.candidate = result
+            this.imageUrl = `http://localhost:8080/admin/file/${result.photoId}`
+            console.log(`${this.imageUrl}`)
+            this.cd.detectChanges()
         })
     }
 
     getAssessment(applicantId: string) {
         this.assessementService.getAssessment(applicantId).subscribe(result => {
             this.assessment = result
+            this.cd.detectChanges()
         })
     }
 
     getInterview(applicantId: string) {
         this.interviewService.getInterview(applicantId).subscribe(result => {
             this.interview = result
+            this.cd.detectChanges()
         })
     }
 
@@ -154,6 +169,7 @@ export class ApplicantDetailComponent implements OnInit {
             next: (result) => {
                 this.medical = result
                 this.hasMedical = true
+                this.cd.detectChanges()
             },
             error: () => {
                 this.hasMedical = false
@@ -164,6 +180,7 @@ export class ApplicantDetailComponent implements OnInit {
     getOffer(applicantId: string){
         this.offerService.getOffer(applicantId).subscribe(result =>{
             this.offers = result;
+            this.cd.detectChanges()
         })
     }
 
@@ -171,6 +188,7 @@ export class ApplicantDetailComponent implements OnInit {
         this.applicantService.changeStage(applicantId).subscribe(result => {
             console.log(result)
             this.getApplicantDetail(applicantId)
+            this.cd.detectChanges()
         })
     }
 
@@ -282,6 +300,7 @@ export class ApplicantDetailComponent implements OnInit {
     updateApplicant(applicantId : string){
         this.applicantService.updateApplicant(applicantId).subscribe(result =>{
             this.getApplicantDetail(applicantId);
+            this.cd.detectChanges()
         })
     }
 
@@ -339,5 +358,8 @@ export class ApplicantDetailComponent implements OnInit {
             })
             fileM.clear()
         }
+    }
+    setDefaultPic(){
+        this.imageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSorWw_NxS1hwieUhifQH2Fb0WkFQiQtWwafg&usqp=CAU"
     }
 }

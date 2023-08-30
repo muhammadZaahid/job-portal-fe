@@ -3,7 +3,8 @@
     <div class="col-12 md:col-12 mt-6 md:mt-6">
         <p-card header="Applicant List">
                
-            <p-table selectionMode="single" [value]="applicants" [tableStyle]="{ 'min-width': '50rem' }">
+            <p-table selectionMode="single" [value]="applicants" [tableStyle]="{ 'min-width': '50rem' }" [rowsPerPageOptions]="[5,10,20,50]" [paginator]="true" [rows]="5"
+            [showCurrentPageReport]="true" currentPageReportTemplate="showing {first} - {last} of {totalRecords} candidates">
                 <ng-template pTemplate="header">
                     <tr>
                         <th>No.</th>

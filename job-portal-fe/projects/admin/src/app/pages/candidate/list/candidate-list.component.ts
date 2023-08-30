@@ -7,6 +7,7 @@ import { JobVacancyService } from "../../../services/job.vacancy.service"
 import { AllJobVacancyResDto } from "../../../dto/jobvacancy/all-job-vacancy.res.dto"
 import { ApplicantService } from "../../../services/applicant.service"
 import { Router } from "@angular/router"
+import { Subscription } from "rxjs"
 
 @Component({
     selector : 'candidate-list',
@@ -20,6 +21,8 @@ export class CandidateListComponent implements OnInit{
     clickedRadioButtonJob = true
     jobVacancies : AllJobVacancyResDto[] = []
     selectedJobVacancy!: AllJobVacancyResDto
+
+    candObs!: Subscription
 
     constructor(
         private candidateService : CandidateService,
@@ -47,7 +50,7 @@ export class CandidateListComponent implements OnInit{
 
 
     getCandidates(){
-        this.candidateService.getCandidates().subscribe(result => {
+        this.candObs = this.candidateService.getCandidates().subscribe(result => {
             this.candidates = result
             console.log(result)
         })
@@ -82,6 +85,11 @@ export class CandidateListComponent implements OnInit{
         }else{
             console.log('Invalid')
         }    
+    }
+
+    ngOnDestroy(){
+        this.candObs.unsubscribe()
+        console.log(`subscription ${this.candObs} is unsubcribed`)
     }
 
     visible: boolean = false;
