@@ -6,6 +6,7 @@ import { ApplicantService } from "../../../services/applicant.service";
 import { CandidateResDto } from "../../../dto/candidate/candidate.res.dto";
 import { CandidateService } from "../../../services/candidate.service";
 import { NonNullableFormBuilder } from "@angular/forms";
+import { Subscription } from "rxjs";
 
 @Component({
     selector: 'aplicant-list',
@@ -17,6 +18,11 @@ export class ApplicantListComponent {
     visible: boolean = false;
     candidates: CandidateResDto[] = []
     selectedCandidate: CandidateResDto | undefined
+    page!: number
+    limit!: number
+
+    candSubs! : Subscription
+    appsSubs! : Subscription
 
     constructor(
         private applicantService: ApplicantService,
@@ -42,16 +48,14 @@ export class ApplicantListComponent {
     }
 
     getApplicants() {
-        this.applicantService.getApplicants().subscribe(result => {
+        this.appsSubs = this.applicantService.getApplicants().subscribe(result => {
             this.applicants = result
-            console.log(result)
         })
     }
 
     getCandidates() {
-        this.candidateService.getCandidates().subscribe(result => {
+        this.candSubs = this.candidateService.getCandidates().subscribe(result => {
             this.candidates = result
-            console.log('CANDIDATE :' + result)
         })
     }
 
@@ -59,4 +63,10 @@ export class ApplicantListComponent {
         this.roter.navigateByUrl(`/admin/applicant/detail/${id}`)
     }
 
+
+
+    ngOnDestroy(){
+        this.candSubs.unsubscribe()
+        this.appsSubs.unsubscribe()
+    }
 }

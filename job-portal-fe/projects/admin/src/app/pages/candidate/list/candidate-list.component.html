@@ -54,7 +54,7 @@
             icon="pi pi-plus" label="Add" styleClass="p-button-success p-button-sm"></p-button>
         </div>        
         <div class="grid mt-3 md:mt-3 justify-content-center">
-            <p-table [value]="jobVacancies" [(selection)]="selectedJobVacancy" dataKey="id"
+            <p-table [value]="jobVacancies" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,15,20]" [(selection)]="selectedJobVacancy" dataKey="id"
             [tableStyle]="{ 'min-width': '50rem' }">
                 <ng-template pTemplate="header">
                     <tr>

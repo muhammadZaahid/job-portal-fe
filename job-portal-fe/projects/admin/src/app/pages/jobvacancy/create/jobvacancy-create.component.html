@@ -24,7 +24,7 @@
                                 <div class="col-12 md:col-9">
                                     <p-dropdown [filter]="true" fileterBy="fullname" styleClass="custom-dropdown"
                                         formControlName="picId" [options]="users" [(ngModel)]="selectedUser"
-                                        optionLabel="fullname" optionValue="id">
+                                        optionLabel="fullname" optionValue="id" placeholder="Select PIC">
                                     </p-dropdown>
                                 </div>
                                 <div class="col-12 md:col-3">
@@ -33,7 +33,7 @@
                                 <div class="col-12 md:col-9">
                                     <p-dropdown [filter]="true" filterBy="companyName" styleClass="custom-dropdown"
                                         formControlName="companyId" [options]="companies" [(ngModel)]="selectedCompany"
-                                        optionLabel="companyName" optionValue="id">
+                                        optionLabel="companyName" optionValue="id" placeholder="Select Company">
                                     </p-dropdown>
                                 </div>
                                 <div class="col-12 md:col-3">
@@ -42,7 +42,7 @@
                                 <div class="col-12 md:col-7">
                                     <p-dropdown styleClass="custom-dropdown" formControlName="jobLevelId"
                                         [options]="jobLevels" [(ngModel)]="selectedJobLevel" optionLabel="jobLevelName"
-                                        optionValue="id">
+                                        optionValue="id" placeholder="Select Job Level">
                                     </p-dropdown>
                                 </div>
                                 <div class="col-12 md:col-3">
@@ -134,7 +134,8 @@
                             [options]="topics"
                             [(ngModel)]="selectedTopic" 
                             optionLabel="topicName" 
-                            optionValue="topicId">
+                            optionValue="topicId"
+                            placeholder="Select Topic">
                         </p-dropdown>
                     </div>
                 </div>

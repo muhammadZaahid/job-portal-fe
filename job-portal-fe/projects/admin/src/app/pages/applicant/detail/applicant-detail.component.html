@@ -7,7 +7,9 @@
                     <div class="col-12 md:col-2">
                         <div class="flex flex-column">
                             <img [style]="{width: '10rem', height: '10rem'}"
-                                src="http://localhost:8080/admin/file/{{candidate.photoId}}" alt="">
+                            [src]="imageUrl"
+                            alt=""
+                            (error)="setDefaultPic()">
                             <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
                             <p-button *ngIf="stageApplication" (click)="confirmMoveToAssessment()"
                                 [style]="{width: '10rem', height: '2.5rem'}" class="mt-2 md:mt-2"
@@ -277,7 +279,7 @@
                 </div>
                 <p-divider></p-divider>
             </ng-container>
-            <ng-container *ngIf="applicantDetail.mcu">
+            <ng-container *ngIf="stagesMcu">
                 <div class="grid" *ngIf="!hasMedical">
                     <div class="col-12 md:col-6">
                         <span class="font-bold text-lg">Medical</span>
@@ -326,7 +328,7 @@
                 </div>
                 <p-divider></p-divider>
             </ng-container>
-            <ng-container *ngIf="applicantDetail.offer">
+            <ng-container *ngIf="appDetails.offer">
                 <div class="grid">
                     <div class="col-12 md:col-12">
                         <span class="font-bold text-lg">Offer</span>

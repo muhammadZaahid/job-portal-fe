@@ -7,7 +7,7 @@
                     <p-button routerLink="/admin/job-vacancy/add"  icon="pi pi-plus" label="Add" styleClass="p-button-success p-button-sm"></p-button>
                 </div>
             </div>       
-            <p-table selectionMode="single" [value]="jobVacancies" [tableStyle]="{ 'min-width': '50rem' }">
+            <p-table selectionMode="single" [value]="jobVacancies" [tableStyle]="{ 'min-width': '50rem' }" [paginator]="true" [rows]="5">
                 <ng-template pTemplate="header">
                     <tr>
                         <th>No.</th>
