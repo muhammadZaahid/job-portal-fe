@@ -6,6 +6,7 @@ import { TabMenuModule } from "primeng/tabmenu";
 import { AvatarModule } from 'primeng/avatar';
 import { BadgeModule } from 'primeng/badge';
 import { DividerModule } from 'primeng/divider';
+import { SharedModule } from "../../components/shared-module";
 
 const routes : Routes = [
     {
@@ -24,7 +25,8 @@ const routes : Routes = [
         TabMenuModule,
         AvatarModule,
         BadgeModule,
-        DividerModule
+        DividerModule,
+        SharedModule
     ],
     exports : [
         RouterModule,
