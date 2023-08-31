@@ -4,5 +4,6 @@ export interface ApplicantResDto {
     companyName : string
     currentStage : string
     appliedDate : string
+    companyPhotoId : string
     topicId : string
 }

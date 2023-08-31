@@ -16,7 +16,7 @@
                 <div class="col-12 md:col-6">
                     <div class="flex flex-row">
                         <p-avatar
-                            image="https://seeklogo.com/images/K/koperasi_indonesia-logo-4A2E56CEA6-seeklogo.com.png"
+                            image="http://localhost:8081/seeker/file/{{a.companyPhotoId}}"
                             styleClass="mr-2" shape="circle"></p-avatar>
                         <div class="flex flex-column mx-2">
                             <p-badge [value]="a.currentStage" severity="info"></p-badge>
@@ -31,7 +31,7 @@
                     </div>
                 </div>            
                 <div *ngIf="a.currentStage == 'assessment' && a.topicId != null" class="col-12 md:col-3 md:col-offset-3">
-                    <p-button class="p-button-sm" routerLink="/candidate/question/detail/{{a.topicId}}">
+                    <p-button class="p-button-sm" routerLink="/candidate/question/detail/{{a.topicId}}/{{a.jobVacancyId}}">
                         <span class="text-sm">Start Assessment</span>
                     </p-button>
                 </div>
