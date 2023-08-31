@@ -30,10 +30,13 @@
 
                     </div>
                 </div>            
-                <div *ngIf="a.currentStage == 'assessment' && a.topicId != null" class="col-12 md:col-3 md:col-offset-3">
+                <div *ngIf="a.currentStage == 'assessment' && a.topicId != null && a.doneAssessment == false" class="col-12 md:col-3 md:col-offset-3">
                     <p-button class="p-button-sm" routerLink="/candidate/question/detail/{{a.topicId}}/{{a.jobVacancyId}}">
                         <span class="text-sm">Start Assessment</span>
                     </p-button>
+                </div>
+                <div *ngIf="a.currentStage == 'assessment' && a.doneAssessment == true" class="col-12 md:col-3 md:col-offset-3">
+                    <span class="text-sm" style="color:green">Done Assessment!</span>
                 </div>
             </div>
             <p-divider></p-divider>
