@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { JobVacancyResDto } from "../../../dto/jobvacancy/job-vacancy.res.dto";
-import { AuthService } from "../../../services/auth.service";
-import { JobVacancyService } from "../../../services/job.vacancy.service";
-import { JobVacancyDetailResDto } from "../../../dto/jobvacancy/job-vacancy-detail.res.dto";
-import { ApplicantService } from "../../../services/applicant.service";
-import { ApplicantInsertReqDto } from "../../../dto/applicant/applicant-insert.req.dto";
+
 import { NonNullableFormBuilder } from "@angular/forms";
+import { JobVacancyDetailResDto } from "@candidateDto/jobvacancy/job-vacancy-detail.res.dto";
+import { JobVacancyResDto } from "@candidateDto/jobvacancy/job-vacancy.res.dto";
+import { ApplicantService } from "@candidateServices/applicant.service";
+import { AuthService } from "@candidateServices/auth.service";
+import { JobVacancyService } from "@candidateServices/job.vacancy.service";
 
 @Component({
     selector: 'job-vacancy-list',

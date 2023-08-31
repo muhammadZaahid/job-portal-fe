@@ -22,7 +22,11 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@candidateDto/*" : ["projects/candidate/src/app/dto/*"],
+      "@candidateServices/*" : ["projects/candidate/src/app/services/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

@@ -1,12 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { MenuItem } from "primeng/api";
-import { UserResDto } from "../../../dto/user/user.res.dto";
-import { AuthService } from "../../../services/auth.service";
-import { UserService } from "../../../services/user.service";
 import { NonNullableFormBuilder } from "@angular/forms";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
 import { FileUpload } from "primeng/fileupload";
+import { UserResDto } from "@candidateDto/user/user.res.dto";
+import { AuthService } from "@candidateServices/auth.service";
+import { UserService } from "@candidateServices/user.service";
 
 @Component({
     selector: 'profile-update',
@@ -17,15 +17,15 @@ export class ProfileUpdateComponent implements OnInit {
     resumeMenuItems: MenuItem[] | undefined;
     date: Date[] | undefined;
     userDetailRes!: UserResDto
-    imageUrl! : string
-    newPhoto! : SafeUrl
+    imageUrl!: string
+    newPhoto!: SafeUrl
 
     constructor(
         private authService: AuthService,
         private userService: UserService,
         private fb: NonNullableFormBuilder,
-        private router : Router,
-        private sanitizer : DomSanitizer
+        private router: Router,
+        private sanitizer: DomSanitizer
     ) { }
 
     userPhoto = this.fb.group({
@@ -39,7 +39,7 @@ export class ProfileUpdateComponent implements OnInit {
     })
 
     userUpdateReq = this.fb.group({
-        id : [''],
+        id: [''],
         nik: [''],
         name: [''],
         phone: [''],
@@ -66,20 +66,20 @@ export class ProfileUpdateComponent implements OnInit {
                 label: 'Download'
             }
         ]
-        if(profile && token){
+        if (profile && token) {
             this.getUserDetail()
         }
     }
 
     getUserDetail() {
         this.userService.getUserDetail().subscribe(result => {
-            const userId = this.authService.getProfile()?.userId 
+            const userId = this.authService.getProfile()?.userId
             // const date = new Date(result.birthDate)
             // const birthDate = new Date(date.getFullYear, date.getMonth, date.getDate)                          
             this.userDetailRes = result
             this.imageUrl = `http://localhost:8081/seeker/file/${result.photoId}`
             this.userUpdateReq.patchValue({
-                id : userId,
+                id: userId,
                 nik: result.nik,
                 name: result.name,
                 phone: result.phone,
@@ -89,24 +89,24 @@ export class ProfileUpdateComponent implements OnInit {
                 socmed2: result.socmed2,
                 socmed3: result.socmed3,
                 experienceYear: result.experienceYear,
-                salaryExpectation: result.salaryExpectation             
-            })     
+                salaryExpectation: result.salaryExpectation
+            })
         })
     }
 
-    onUpdate(){
-        if(this.userUpdateReq.valid){
+    onUpdate() {
+        if (this.userUpdateReq.valid) {
             const request = this.userUpdateReq.getRawValue()
-            this.userService.updateUser(request).subscribe(result =>{            
+            this.userService.updateUser(request).subscribe(result => {
                 this.router.navigateByUrl("candidate/profile")
                 console.log(result)
             })
-        }else{
+        } else {
             console.log('Invalid')
         }
     }
 
-    updatePhoto(event: any, fileM : FileUpload) {
+    updatePhoto(event: any, fileM: FileUpload) {
         const toBase64 = (file: File) => new Promise<string>((resolve, reject) => {
             const reader = new FileReader();
             reader.readAsDataURL(file);
@@ -121,8 +121,8 @@ export class ProfileUpdateComponent implements OnInit {
                 const resultExtension = file.name.substring(file.name.indexOf(".") + 1, file.name.length)
 
                 this.userPhoto.patchValue({
-                    files : resultBase64,
-                    fileFormat : resultExtension
+                    files: resultBase64,
+                    fileFormat: resultExtension
                 })
 
                 this.userPhoto
@@ -147,11 +147,11 @@ export class ProfileUpdateComponent implements OnInit {
                 const resultExtension = file.name.substring(file.name.indexOf(".") + 1, file.name.length)
 
                 this.userResume.patchValue({
-                    files : resultBase64,
-                    fileFormat : resultExtension
+                    files: resultBase64,
+                    fileFormat: resultExtension
                 })
 
-                this.userResume           
+                this.userResume
             })
         }
     }
@@ -160,28 +160,28 @@ export class ProfileUpdateComponent implements OnInit {
         const toString = (date: number, padLength: number): string => {
             return date.toString().padStart(padLength, '0');
         };
-    
+
         const formattedDate =
             toString(event.getFullYear(), 4) +
             '-' + toString(event.getMonth() + 1, 2) +
             '-' + toString(event.getDate(), 2);
-    
+
         return formattedDate;
     }
 
-    birthDate(event : any){
+    birthDate(event: any) {
         const formattedDate = this.formatDate(event);
         this.userUpdateReq.patchValue({
             birthDate: formattedDate
         });
     }
 
-    getNewPhoto(base64 : string) : SafeUrl{
+    getNewPhoto(base64: string): SafeUrl {
         return this.sanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'
-          + base64);                 
+            + base64);
     }
 
-    setDefaultPic(){
+    setDefaultPic() {
         this.imageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSorWw_NxS1hwieUhifQH2Fb0WkFQiQtWwafg&usqp=CAU"
     }
 }

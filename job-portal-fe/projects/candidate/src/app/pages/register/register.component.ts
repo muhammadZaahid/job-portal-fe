@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
-import { UserService } from "../../services/user.service";
 import { NonNullableFormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { UserService } from "@candidateServices/user.service";
 
 @Component({
     selector : 'register',

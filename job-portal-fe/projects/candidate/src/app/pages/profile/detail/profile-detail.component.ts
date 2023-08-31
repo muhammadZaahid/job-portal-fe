@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { UserResDto } from "@candidateDto/user/user.res.dto";
+import { AuthService } from "@candidateServices/auth.service";
+import { UserService } from "@candidateServices/user.service";
 import { MenuItem } from "primeng/api";
-import { UserResDto } from "../../../dto/user/user.res.dto";
-import { UserService } from "../../../services/user.service";
-import { AuthService } from "../../../services/auth.service";
 
 @Component({
     selector : 'profile-detail',

@@ -1,11 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { AuthService } from "../../../services/auth.service";
-import { QuestionsResDto } from "../../../dto/question/question.res.dto";
-import { QuestionService } from "../../../services/question.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { QuestionAnswerResDto } from "../../../dto/question/question-answer.res.dto";
-import { FormArray, FormGroup, NonNullableFormBuilder, Validators } from "@angular/forms";
-import { QuestionAssessmentAnswerReqDto } from "../../../dto/question/question-assessment-answer.req.dto";
+import { FormArray, NonNullableFormBuilder, Validators } from "@angular/forms";
+import { QuestionAssessmentAnswerReqDto } from "@candidateDto/question/question-assessment-answer.req.dto";
+import { QuestionsResDto } from "@candidateDto/question/question.res.dto";
+import { AuthService } from "@candidateServices/auth.service";
+import { QuestionService } from "@candidateServices/question.service";
 
 @Component({
     selector: 'question-detail',
@@ -21,7 +20,7 @@ export class QuestionDetailComponent implements OnInit {
         private questionService: QuestionService,
         private activatedRoute: ActivatedRoute,
         private fb: NonNullableFormBuilder,
-        private router : Router
+        private router: Router
     ) { }
 
     ngOnInit(): void {
@@ -31,7 +30,7 @@ export class QuestionDetailComponent implements OnInit {
         if (profile && token) {
             const topicId = this.activatedRoute.snapshot.params['topicId']
             const jobVacancyId = this.activatedRoute.snapshot.params['jobVacancyId']
-            this.getQuestionTopic(topicId,candidateId,jobVacancyId)
+            this.getQuestionTopic(topicId, candidateId, jobVacancyId)
         }
     }
 
@@ -57,12 +56,12 @@ export class QuestionDetailComponent implements OnInit {
         this.questionIndex = questionIndex
     }
 
-    getQuestionTopic(topicId: string, candidateId : string, jobVacancyId : string) {
+    getQuestionTopic(topicId: string, candidateId: string, jobVacancyId: string) {
         this.questionService.getQuestions(topicId, candidateId, jobVacancyId).subscribe(result => {
             this.questions = result
             for (let i = 0; i < this.questions.length; i++) {
                 this.submitAssessmentReq.patchValue({
-                    applicantId : this.questions[i].applicantId
+                    applicantId: this.questions[i].applicantId
                 })
                 this.answers.push((this.fb.group({
                     questionId: [this.questions[i].questionId, Validators.required],
@@ -76,18 +75,18 @@ export class QuestionDetailComponent implements OnInit {
         const answerId = this.questions[this.questionIndex].options[this.answerIndex].answerId
         const question = this.questions[questionIndex];
         const selectedAnswer = question.options[answerIndex];
-        
+
         question.selectedAnswerId = selectedAnswer.answerId;
 
         this.answers.at(this.questionIndex).patchValue({
             answerId: answerId
-        }) 
+        })
 
     }
 
-    submitAssessment(){
+    submitAssessment() {
         const request = this.submitAssessmentReq.getRawValue()
-        this.questionService.submitAssessment(request).subscribe(result =>{
+        this.questionService.submitAssessment(request).subscribe(result => {
             console.log(result)
             this.router.navigateByUrl("candidate/application")
         })

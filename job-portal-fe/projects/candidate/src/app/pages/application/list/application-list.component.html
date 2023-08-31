@@ -2,22 +2,14 @@
     <div class="col-12 md:col-8 md:col-offset-2 mt-6 md:mt-6">
         <h1 class="p-3">My Applications</h1>
         <p-tabMenu [model]="items"></p-tabMenu>
-
-
     </div>
     <div class="col-12 md:col-8 md:col-offset-2 mt-2">
         <div *ngFor="let a of applications">
-            <!-- <div class="flex flex-row-reverse">
-                    <p-button class="p-button-sm">
-                        <span class="text-sm">Start Assessment</span>
-                    </p-button>
-                </div>                               -->
             <div class="grid">
                 <div class="col-12 md:col-6">
                     <div class="flex flex-row">
-                        <p-avatar
-                            image="http://localhost:8081/seeker/file/{{a.companyPhotoId}}"
-                            styleClass="mr-2" shape="circle"></p-avatar>
+                        <p-avatar image="http://localhost:8081/seeker/file/{{a.companyPhotoId}}" styleClass="mr-2"
+                            shape="circle"></p-avatar>
                         <div class="flex flex-column mx-2">
                             <p-badge [value]="a.currentStage" severity="info"></p-badge>
                             <span class="mt-2 font-bold text-xl">
@@ -27,15 +19,17 @@
                             <span class="text-lg">Jakarta</span>
                             <span class="text-sm text-color-secondary">Applied on {{a.appliedDate}}</span>
                         </div>
-
                     </div>
-                </div>            
-                <div *ngIf="a.currentStage == 'assessment' && a.topicId != null && a.doneAssessment == false" class="col-12 md:col-3 md:col-offset-3">
-                    <p-button class="p-button-sm" routerLink="/candidate/question/detail/{{a.topicId}}/{{a.jobVacancyId}}">
+                </div>
+                <div *ngIf="a.currentStage == 'assessment' && a.topicId != null && a.doneAssessment == false"
+                    class="col-12 md:col-3 md:col-offset-3">
+                    <p-button class="p-button-sm"
+                        routerLink="/candidate/question/detail/{{a.topicId}}/{{a.jobVacancyId}}">
                         <span class="text-sm">Start Assessment</span>
                     </p-button>
                 </div>
-                <div *ngIf="a.currentStage == 'assessment' && a.doneAssessment == true" class="col-12 md:col-3 md:col-offset-3">
+                <div *ngIf="a.currentStage == 'assessment' && a.doneAssessment == true"
+                    class="col-12 md:col-3 md:col-offset-3">
                     <span class="text-sm" style="color:green">Done Assessment!</span>
                 </div>
             </div>
