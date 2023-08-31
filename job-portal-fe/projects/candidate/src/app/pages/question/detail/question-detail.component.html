@@ -2,30 +2,39 @@
     <div class="col-10 col-offset-1 mt-8 md:mt-8">
         <p-card header="Assessment">
             <p-divider></p-divider>
-
+            <pre>{{submitAssessmentReq.value | json}}</pre>
+            <pre></pre>
             <div class="grid">
                 <div class="col-12 md:col-6">
-                    <div *ngFor="let q of questions; let i = index">
-                        <div class="flex flex-row mb-3">
-                            <div class="flex flex-column mx-2">
-                                <span class="mt-2 text-lg font-bold mb-2 md:mb-2">
-                                    Question {{i+1}}
-                                </span>
-                                <span class="mb-3 md:mb-3 text-lg">{{q.questionDesc}}</span>
-                                <div class="flex flex-column">
-                                    <div *ngFor="let a of q.options">
-                                        <div class="flex flex-row mb-2">
-                                            <p-radioButton 
-                                                [inputId]="a.answerId" 
-                                                [(ngModel)]="selectedAnswer"                                               
-                                            ></p-radioButton>
-                                            <label [for]="a.answerId" class="ml-2 text-lg">{{a.answerText}}</label>
+                    <form [formGroup]="submitAssessmentReq" (ngSubmit)="submitAssessment()">
+                        <div *ngFor="let q of questions; let i = index">
+                            <div class="flex flex-row mb-3">
+                                <div class="flex flex-column mx-2">
+                                    <span class="mt-2 text-lg font-bold mb-2 md:mb-2">
+                                        Question {{i+1}}
+                                    </span>
+                                    <span class="mb-3 md:mb-3 text-lg">{{q.questionDesc}}</span>
+                                    <div class="flex flex-column">
+                                        <div *ngFor="let a of q.options; let j = index">
+
+                                            <div class="flex flex-row mb-2">
+                                                <form>
+                                                    <p-radioButton [value]="a.answerId" [ngModel]="q.selectedAnswerId"
+                                                        name="'answer' + i" (click)="getAnswerIndex(i,j)"
+                                                        (click)="getAnswer(i, j)"></p-radioButton>
+                                                    <label [for]="a.answerId"
+                                                        class="ml-2 text-lg">{{a.answerText}}</label>
+                                                </form>
+                                            </div>
+
                                         </div>
-                                    </div>                                    
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>                    
+                        <p-button type="submit">Submit</p-button>
+                    </form>
+                   
                 </div>
             </div>
         </p-card>
