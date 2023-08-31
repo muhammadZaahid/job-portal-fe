@@ -10,7 +10,7 @@ export interface JobVacancyDetailResDto {
     benefitDesc : string
     jobDesc : string
     salaryPublish : boolean
-    SalaryFrom : number
-    SalaryTo : number
+    salaryFrom : number
+    salaryTo : number
     hasApplied : boolean
 }
