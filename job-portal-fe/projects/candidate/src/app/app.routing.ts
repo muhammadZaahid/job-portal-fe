@@ -32,6 +32,10 @@ const routes : Routes = [
         path : 'candidate/question',
         loadChildren : () => import('./pages/question/question.module').then(q => q.QuestionModule)
     },
+    {       
+        path : 'register',
+        loadChildren : ()=> import('./pages/register/register.module').then(r => r.RegisterModule)
+    },
     {
         path : 'login',
         children : [
@@ -41,6 +45,11 @@ const routes : Routes = [
                 canMatch : [authValidationLogin]             
             }
         ]
+    },
+    {
+        path : '',
+        redirectTo : '/login',
+        pathMatch : "full"
     }
 
 ]

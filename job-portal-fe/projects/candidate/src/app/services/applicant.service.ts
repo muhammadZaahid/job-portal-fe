@@ -22,4 +22,8 @@ export class ApplicantService{
     getApplications() : Observable<ApplicantResDto[]>{
         return this.baseService.get<ApplicantResDto[]>(`${BASE_URL_CANDIDATE}/applicant`)
     }
+
+    getApplicationByStage(currStage : string) : Observable<ApplicantResDto[]>{
+        return this.baseService.get<ApplicantResDto[]>(`${BASE_URL_CANDIDATE}/applicant?currStage=${currStage}`)
+    }
 }
