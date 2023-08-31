@@ -6,4 +6,5 @@ export interface ApplicantResDto {
     appliedDate : string
     companyPhotoId : string
     topicId : string
+    doneAssessment : boolean
 }
