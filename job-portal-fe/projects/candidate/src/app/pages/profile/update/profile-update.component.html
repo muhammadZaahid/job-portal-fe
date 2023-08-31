@@ -10,15 +10,15 @@
                                     <div class="relative">
                                         <div class="static">
                                             <div [style]="{width: '8rem', height: '8rem'}">
-                                                <img *ngIf="!newPhoto" [style]="{width: '7rem', height: '7rem'}" [src]="imageUrl" alt=""
-                                                    (error)="setDefaultPic()">
-                                                <img *ngIf="newPhoto" [style]="{width: '7rem', height: '7rem'}" [src]="newPhoto" alt=""
-                                                    (error)="setDefaultPic()">
+                                                <img *ngIf="!newPhoto" [style]="{width: '7rem', height: '7rem'}"
+                                                    [src]="imageUrl" alt="" (error)="setDefaultPic()">
+                                                <img *ngIf="newPhoto" [style]="{width: '7rem', height: '7rem'}"
+                                                    [src]="newPhoto" alt="" (error)="setDefaultPic()">
                                             </div>
                                             <div class="absolute bottom-0 right-0">
                                                 <span>
-                                                    <p-fileUpload #fileM (onSelect)="updatePhoto($event,fileM)" [auto]="true"
-                                                        chooseIcon="pi pi-pencil" mode="basic"
+                                                    <p-fileUpload #fileM (onSelect)="updatePhoto($event,fileM)"
+                                                        [auto]="true" chooseIcon="pi pi-pencil" mode="basic"
                                                         styleClass="edit-profile-button p-button-rounded p-button-info">
                                                     </p-fileUpload>
                                                 </span>
@@ -53,13 +53,7 @@
                                             <Label>Name</Label>
                                         </div>
                                         <div class="col-12 md:col-7">
-                                            <div class="p-inputgroup">
-                                                <input formControlName="name" class="p-inputtext-sm" pInputText
-                                                    type="text">
-                                                <span class="p-inputgroup-addon">
-                                                    <i class="pi pi-user"></i>
-                                                </span>
-                                            </div>
+                                            <input formControlName="name" class="p-inputtext-sm" pInputText type="text">
                                         </div>
                                         <div class="col-12 md:col-3">
                                             <Label>NIK</Label>
@@ -92,38 +86,23 @@
                                             <Label>Birth Date</Label>
                                         </div>
                                         <div class="col-12 md:col-7">
-                                            <div class="p-inputgroup">
-                                                <p-calendar (onSelect)="birthDate($event)" dateFormat="yy-mm-dd"
-                                                    formControlName="birthDate" class="p-inputtext-sm" [touchUI]="true"
-                                                    [readonlyInput]="true"></p-calendar>
-                                                <span class="p-inputgroup-addon">
-                                                    <i class="pi pi-calendar"></i>
-                                                </span>
-                                            </div>
+                                            <p-calendar (onSelect)="birthDate($event)" dateFormat="yy-mm-dd"
+                                                formControlName="birthDate" class="p-inputtext-sm" [touchUI]="true"
+                                                [readonlyInput]="true"></p-calendar>
                                         </div>
                                         <div class="col-12 md:col-4">
                                             <Label>Birth Place</Label>
                                         </div>
                                         <div class="col-12 md:col-7">
-                                            <div class="p-inputgroup">
-                                                <input formControlName="birthPlace" class="p-inputtext-sm" pInputText
-                                                    type="text">
-                                                <span class="p-inputgroup-addon">
-                                                    <i class="pi pi-map-marker"></i>
-                                                </span>
-                                            </div>
+                                            <input formControlName="birthPlace" class="p-inputtext-sm" pInputText
+                                            type="text">
                                         </div>
                                         <div class="col-12 md:col-4">
                                             <Label>Experience Year</Label>
                                         </div>
                                         <div class="col-12 md:col-7">
-                                            <div class="p-inputgroup">
-                                                <input formControlName="experienceYear" pKeyFilter="int"
-                                                    class="p-inputtext-sm" pInputText type="text">
-                                                <span class="p-inputgroup-addon">
-                                                    Years
-                                                </span>
-                                            </div>
+                                            <input formControlName="experienceYear" pKeyFilter="int"
+                                            class="p-inputtext-sm" pInputText type="text">
                                         </div>
                                         <div>
 
@@ -132,13 +111,8 @@
                                             <Label>Salary Expectation</Label>
                                         </div>
                                         <div class="col-12 md:col-7">
-                                            <div class="p-inputgroup">
-                                                <span class="p-inputgroup-addon">
-                                                    Rp.
-                                                </span>
-                                                <input formControlName="salaryExpectation" pKeyFilter="num"
-                                                    class="p-inputtext-sm" pInputText type="text">
-                                            </div>
+                                            <input formControlName="salaryExpectation" pKeyFilter="num"
+                                            class="p-inputtext-sm" pInputText type="text">
                                         </div>
                                     </div>
                                 </div>

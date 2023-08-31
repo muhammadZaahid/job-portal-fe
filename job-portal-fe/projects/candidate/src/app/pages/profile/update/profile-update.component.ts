@@ -89,7 +89,7 @@ export class ProfileUpdateComponent implements OnInit {
                 socmed2: result.socmed2,
                 socmed3: result.socmed3,
                 experienceYear: result.experienceYear,
-                salaryExpectation: result.salaryExpectation
+                salaryExpectation: result.salaryExpectation             
             })     
         })
     }
