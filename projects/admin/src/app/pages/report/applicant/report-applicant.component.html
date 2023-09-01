@@ -1,0 +1,43 @@
+<div class="grid">
+    <div class="col-12 md:col-12 mt-6 md:mt-6">
+        <p-card header="Applicant List">
+            <form>
+                <div class="grid">
+                    <div class="col-12 md:col-3">
+                        <p-calendar dateFormat="yy-mm-dd" (onSelect)="startDateWithoutTime($event)"></p-calendar>
+                        <p-calendar dateFormat="yy-mm-dd" (onSelect)="endDateWithoutTime($event)"></p-calendar>
+                        <p-button (click)="getFiltered()"
+                            icon="pi pi-search-plus"
+                            styleClass="p-button-success p-button-sm"></p-button>
+                    </div>
+
+                    <div class="col">
+
+                    </div>
+                </div>
+            </form>
+            <p-table [value]="applicantData" [tableStyle]="{ 'min-width': '50rem' }" [rowsPerPageOptions]="[5,10,20,50]"
+                [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                currentPageReportTemplate="showing {first} - {last} of {totalRecords} applicants">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Job Title</th>
+                        <th>Current Stage</th>
+                        <th>Application Duration</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-applicantData let-rowIndex="rowIndex">
+                    <tr>
+                        <td>{{rowIndex+1}}</td>
+                        <td>{{ applicantData.candidateName }}</td>
+                        <td>{{ applicantData.jobTitle }}</td>
+                        <td>{{ applicantData.currentStage }}</td>
+                        <td>{{ applicantData.totalDays }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-card>
+    </div>
+</div>

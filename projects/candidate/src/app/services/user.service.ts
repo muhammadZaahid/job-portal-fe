@@ -28,4 +28,7 @@ export class UserService{
     insertUser(request : UserInsertReqDto) : Observable<InsertResDto>{
         return this.baseService.post<InsertResDto>(`${BASE_URL_CANDIDATE}/users`,request)
     }
+    checkProfile() : Observable<boolean>{
+        return this.baseService.get<boolean>(`${BASE_URL_CANDIDATE}/users/checkProfile`)
+    }
 }
