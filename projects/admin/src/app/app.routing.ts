@@ -51,6 +51,12 @@ const routes : Routes = [
     },
     {
         component : BaseComponent,
+        path: 'admin/report',
+        loadChildren: () => import('./pages/report/report.module').then(a => a.ReportModule),
+        canMatch : [authValidation]
+    },
+    {
+        component : BaseComponent,
         path : 'dashboard',
         children : [
             {
