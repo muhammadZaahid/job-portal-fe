@@ -59,6 +59,17 @@ export class NavbarComponent implements OnInit{
                             routerLink: '/admin/question'
                         }
                     ]
+                },
+                {
+                    label: 'Report',
+                    icon : 'pi pi-fw pi-file-export',
+                    items :[
+                        {
+                            label: 'Applicant',
+                            icon: 'pi pi-fw pi-user',
+                            routerLink: '/admin/report/applicant'
+                        }
+                    ]
                 },                
                 {
                     label: profile.profileName,
