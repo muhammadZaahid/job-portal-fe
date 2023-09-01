@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MenuItem } from "primeng/api";
-import { NonNullableFormBuilder } from "@angular/forms";
+import { NonNullableFormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
 import { FileUpload } from "primeng/fileupload";
@@ -40,16 +40,16 @@ export class ProfileUpdateComponent implements OnInit {
 
     userUpdateReq = this.fb.group({
         id: [''],
-        nik: [''],
-        name: [''],
-        phone: [''],
-        birthPlace: [''],
-        birthDate: [''],
+        nik: ['',[Validators.required]],
+        name: ['',[Validators.required]],
+        phone: ['',[Validators.required]],
+        birthPlace: ['',[Validators.required]],
+        birthDate: ['',[Validators.required]],
         socmed1: [''],
         socmed2: [''],
         socmed3: [''],
-        experienceYear: [0],
-        salaryExpectation: [0],
+        experienceYear: [0,[Validators.required]],
+        salaryExpectation: [0,[Validators.required]],
         photo: this.userPhoto,
         resume: this.userResume
     })

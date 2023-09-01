@@ -1,5 +1,13 @@
 <div class="grid">
     <div class="col-12 md:col-10 md:col-offset-1 mt-7 md:mt-7">
+        <a routerLink="/admin/company" style="text-decoration: none;">
+            <div class="flex flex-row mt-3 md:mt-3 mb-3 md:mb-3 text-color-secondary">
+                <i class="pi pi-angle-left" style="font-size: 1.5rem"></i>
+                <span class="text-lg font-bold">
+                    Back
+                </span>
+            </div>
+        </a>
         <p-card header="Update Company">
             <form [formGroup]="companyUpdateReqDto" (ngSubmit)="onUpdate()">
                 <div class="col-12 flex flex-row-reverse">

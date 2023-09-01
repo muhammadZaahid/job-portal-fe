@@ -1,15 +1,29 @@
 <div class="grid">
     <div class="col-12 md:col-10 md:col-offset-1 mt-7 md:mt-7">
-        <p-card header="Applicant Detail">
+        <a routerLink="/admin/applicant" style="text-decoration: none;">
+            <div class="flex flex-row mt-3 md:mt-3 mb-3 md:mb-3 text-color-secondary">
+                <i class="pi pi-angle-left" style="font-size: 1.5rem"></i>
+                <span class="text-lg font-bold">
+                    Back
+                </span>
+            </div>
+        </a>
+        <p-card header="Applicant Detail">     
+            <div class="mb-6 md:mb-6 mt-4 md:mt-4">
+                <p-steps 
+                    [model]="stages" 
+                    [readonly]="true"
+                    [activeIndex]="activeIndex"
+                >
+                </p-steps>
+            </div>
             <p-divider></p-divider>
             <ng-container *ngIf="candidate">
                 <div class="grid">
                     <div class="col-12 md:col-2">
                         <div class="flex flex-column">
-                            <img [style]="{width: '10rem', height: '10rem'}"
-                            [src]="imageUrl"
-                            alt=""
-                            (error)="setDefaultPic()">
+                            <img [style]="{width: '10rem', height: '10rem'}" [src]="imageUrl" alt=""
+                                (error)="setDefaultPic()">
                             <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
                             <p-button *ngIf="stageApplication" (click)="confirmMoveToAssessment()"
                                 [style]="{width: '10rem', height: '2.5rem'}" class="mt-2 md:mt-2"
@@ -97,8 +111,8 @@
                                 <Label>Salary Expectation</Label>
                             </div>
                             <div class="col-12 md:col-6">
-                                <input disabled [value]="candidate.salaryExpectation" class="p-inputtext-sm font-bold"
-                                    pInputText type="text">
+                                <input disabled [value]="salaryExpectation" class="p-inputtext-sm font-bold" pInputText
+                                    type="text">
                             </div>
                         </div>
                     </div>
@@ -214,6 +228,7 @@
                         <p-divider></p-divider>
                     </div>
                 </div>
+
                 <div class="grid">
                     <div class="col-12 md:col-6">
                         <span class="font-bold text-base">Contact Person</span>
@@ -223,21 +238,21 @@
                                 <Label>Name</Label>
                             </div>
                             <div class="col-12 md:col-7">
-                                <input disabled [value]="assessment.picName" class="p-inputtext-sm font-bold" pInputText
-                                    type="text">
+                                <input disabled [value]="interview.interviewName" class="p-inputtext-sm font-bold"
+                                    pInputText type="text">
                             </div>
                             <div class="col-12 md:col-3">
                                 <Label>Phone</Label>
                             </div>
                             <div class="col-12 md:col-7">
-                                <input [value]="assessment.picPhone" disabled class="p-inputtext-sm font-bold"
+                                <input [value]="interview.interviewPhone" disabled class="p-inputtext-sm font-bold"
                                     pInputText type="text">
                             </div>
                             <div class="col-12 md:col-3">
                                 <Label>E-mail</Label>
                             </div>
                             <div class="col-12 md:col-7">
-                                <input [value]="assessment.picEmail" disabled class="p-inputtext-sm font-bold"
+                                <input [value]="interview.interviewEmail" disabled class="p-inputtext-sm font-bold"
                                     pInputText type="text">
                             </div>
                         </div>
@@ -328,45 +343,49 @@
                 </div>
                 <p-divider></p-divider>
             </ng-container>
-            <ng-container *ngIf="appDetails.offer">
-                <div class="grid">
-                    <div class="col-12 md:col-12">
-                        <span class="font-bold text-lg">Offer</span>
-                        <p-divider></p-divider>
-                    </div>
-                </div>
-                <div class="grid">
-                    <div class="col-12 md:col-12">
-                        <span class="font-bold text-base">Detail</span>
-                        <p-divider></p-divider>
-                    </div>
-                    <div class="col-12 md:col-6">
-                        <div class="grid">
-                            <div class="col-12 md:col-3">
-                                <Label>Name</Label>
-                            </div>
-                            <div class="col-12 md:col-7">
-                                <input disabled [value]="offers.offerPicName" class="p-inputtext-sm font-bold"
-                                    pInputText type="text">
-                            </div>
-                            <div class="col-12 md:col-3">
-                                <Label>Salary Offer</Label>
-                            </div>
-                            <div class="col-12 md:col-7">
-                                <input placeholder="-" [value]="offers.offerSalary" disabled
-                                    class="p-inputtext-sm font-bold" pInputText type="text">
-                            </div>
-                            <div class="col-12 md:col-3">
-                                <Label>Date & Time</Label>
-                            </div>
-                            <div class="col-12 md:col-7">
-                                <input placeholder="-" [value]="offers.offerTime" disabled
-                                    class="p-inputtext-sm font-bold " pInputText type="text">
-                            </div>
+            <ng-container *ngIf="applicantDetail">
+                <div *ngIf="applicantDetail.offer">
+                    <div class="grid">
+                        <div class="col-12 md:col-12">
+                            <span class="font-bold text-lg">Offer</span>
+                            <p-divider></p-divider>
                         </div>
                     </div>
+                    <div class="grid">
+                        <div class="col-12 md:col-12">
+                            <span class="font-bold text-base">Detail</span>
+                            <p-divider></p-divider>
+                        </div>
+                        <ng-container *ngIf="offers">
+                            <div class="col-12 md:col-6">
+                                <div class="grid">
+                                    <div class="col-12 md:col-3">
+                                        <Label>Name</Label>
+                                    </div>
+                                    <div class="col-12 md:col-7">
+                                        <input disabled [value]="offers.offerPicName" class="p-inputtext-sm font-bold"
+                                            pInputText type="text">
+                                    </div>
+                                    <div class="col-12 md:col-3">
+                                        <Label>Salary Offer</Label>
+                                    </div>
+                                    <div class="col-12 md:col-7">
+                                        <input placeholder="-" [value]="offers.offerSalary" disabled
+                                            class="p-inputtext-sm font-bold" pInputText type="text">
+                                    </div>
+                                    <div class="col-12 md:col-3">
+                                        <Label>Date & Time</Label>
+                                    </div>
+                                    <div class="col-12 md:col-7">
+                                        <input placeholder="-" [value]="offers.offerTime" disabled
+                                            class="p-inputtext-sm font-bold " pInputText type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                    <p-divider></p-divider>
                 </div>
-                <p-divider></p-divider>
             </ng-container>
         </p-card>
     </div>

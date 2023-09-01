@@ -17,6 +17,7 @@ import { FileReqDto } from "../../../dto/file/file.req.dto";
 import { FileUpload } from "primeng/fileupload";
 import { OfferService } from "../../../services/offer.service";
 import { OfferingResDto } from "../../../dto/offer/offering.res.dto";
+import { Stage } from "projects/candidate/src/app/constants/stage.constan";
 
 @Component({
     selector: 'applicant-detail',
@@ -48,6 +49,9 @@ export class ApplicantDetailComponent implements OnInit {
     visible: boolean = false
     medicalVisible = false
     offerVisible = false
+
+    stages: MenuItem[] | undefined;
+    activeIndex : number = 0
 
     constructor(
         private candidateService: CandidateService,
@@ -84,6 +88,8 @@ export class ApplicantDetailComponent implements OnInit {
         } else {
             console.log('Invalid')
         }
+
+        this.getStage()
     }
 
     interviewReqDto = this.fb.group({
@@ -134,17 +140,15 @@ export class ApplicantDetailComponent implements OnInit {
         })
     }
 
-    get appDetails(){
-        return (this.applicantDetail)
-    }
-
     get stagesMcu(){
         return (this.applicantDetail && this.applicantDetail.mcu) ? this.applicantDetail.mcu : null
     }
 
+    salaryExpectation! : string 
     getCandidate(candidateId: string) {
         this.candidateService.getCandidate(candidateId).subscribe(result => {
             this.candidate = result
+            this.salaryExpectation ='Rp. ' + result.salaryExpectation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
             this.imageUrl = `http://localhost:8080/admin/file/${result.photoId}`
             console.log(`${this.imageUrl}`)
             this.cd.detectChanges()
@@ -230,18 +234,48 @@ export class ApplicantDetailComponent implements OnInit {
         })
     }
 
+    getStage(){
+        this.stages = [
+            {
+                label : 'Application'
+            },
+            {
+                label : 'Assessment'
+            },
+            {
+                label : 'Interview'
+            },
+            {
+                label : 'MCU'
+            },
+            {
+                label : 'Offer'
+            },
+            {
+                label : 'Hired'                
+            }
+        ]
+    }
+
     checkCurrentStage(currentStage: string) {
-        if (currentStage == 'application') {
+        if (currentStage == Stage.APPLICATION) {
             this.stageApplication = true
+            this.activeIndex = 0
         }
-        else if (currentStage == 'assessment') {
+        else if (currentStage == Stage.ASSESSMENT) {
             this.stageAssessement = true
-        } else if (currentStage == 'interview') {
+            this.activeIndex = 1
+        } else if (currentStage == Stage.INTERVIEW) {
             this.stageInterview = true
-        } else if (currentStage == 'mcu') {
+            this.activeIndex = 2
+        } else if (currentStage == Stage.MCU) {
             this.stageMcu = true
-        } else if (currentStage == 'offer') {
+            this.activeIndex = 3
+        } else if (currentStage == Stage.OFFER) {
             this.stageOffer = true
+            this.activeIndex = 4
+        } else if (currentStage == Stage.HIRED){
+            this.activeIndex = 5
         }
     }
     onSelectDate() {
@@ -288,6 +322,7 @@ export class ApplicantDetailComponent implements OnInit {
                 next: (result) => {
                     this.offeringReqDto.reset()
                     this.offerVisible = false
+                    this.stageMcu = false
                     this.updateApplicant(data.applicantId)
                 },
                 error: () => {
@@ -313,8 +348,8 @@ export class ApplicantDetailComponent implements OnInit {
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
                 this.changeStage(applicantId)
-                this.getApplicantDetail(applicantId)
                 this.stageInterview = false
+                this.getApplicantDetail(applicantId)                
             },
             reject: () => {
 
@@ -329,8 +364,8 @@ export class ApplicantDetailComponent implements OnInit {
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
                 this.changeStage(applicantId)
-                this.getApplicantDetail(applicantId)
                 this.stageOffer = false
+                this.getApplicantDetail(applicantId)               
             },
             reject: () => {
 

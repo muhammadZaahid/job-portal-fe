@@ -1,6 +1,14 @@
 <div class="grid mb-5">
     <div class="col-10 col-offset-1 mt-8 md:mt-8">
-        <p-panel header="My Profile">
+        <a routerLink="/candidate/profile" style="text-decoration: none;">
+            <div class="flex flex-row mt-3 md:mt-3 mb-3 md:mb-3 text-color-secondary">
+                <i class="pi pi-angle-left" style="font-size: 1.5rem"></i>
+                <span class="text-lg font-bold">
+                    Back
+                </span>
+            </div>
+        </a>
+        <p-panel header="My Profile" >
             <form [formGroup]="userUpdateReq" (ngSubmit)="onUpdate()">
                 <div class="grid">
                     <div class="col-12 md:col-8">
@@ -35,8 +43,8 @@
                     <div class="col-12 md:col-3 col-offset-1 mt-3">
                         <div class="flex flex-row">
                             <p-button styleClass="edit-profile-button mx-2 md:mx-2"
-                                routerLink="/candidate/profile">Cancel</p-button>
-                            <p-button type="submit" styleClass="save-profile-button">Save Change</p-button>
+                                routerLink="/candidate/profile" label="Cancel"></p-button>
+                            <p-button type="submit" styleClass="save-profile-button" [disabled]="userUpdateReq.invalid" label="Save Change"></p-button>
                         </div>
                     </div>
                     <div class="col">
@@ -131,7 +139,7 @@
                                                 <i class="pi pi-file-pdf" style="font-size: 4rem"></i>
                                                 <span class="mx-3">PDF</span>
                                             </div>
-                                            <div class="mx-3 mt-2">
+                                            <div class="mx-3 mt-2" *ngIf="userDetailRes.resume != null">
                                                 <div class="flex flex-column">
                                                     <span class="font-bold text-base mt-2">Resume.{{userDetailRes.resume.fileFormat}}</span>
                                                 </div>

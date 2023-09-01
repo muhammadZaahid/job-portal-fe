@@ -1,5 +1,13 @@
 <div class="grid">
     <div class="col-12 md:col-10 md:col-offset-1 mt-7 md:mt-7">
+        <a routerLink="/admin/job-vacancy" style="text-decoration: none;">
+            <div class="flex flex-row mt-3 md:mt-3 mb-3 md:mb-3 text-color-secondary">
+                <i class="pi pi-angle-left" style="font-size: 1.5rem"></i>
+                <span class="text-lg font-bold">
+                    Back
+                </span>
+            </div>
+        </a>
         <p-card header="Update Job Vacancy">
             <form [formGroup]="jobVacancyUpdateReqDto" (ngSubmit)="onUpdate()">
                 <div class="col-12 flex flex-row-reverse">
@@ -22,47 +30,28 @@
                                     <Label>PIC</Label>
                                 </div>
                                 <div class="col-12 md:col-9">
-                                    <p-dropdown
-                                        [filter]="true"
-                                        fileterBy="fullname"
-                                        styleClass="custom-dropdown"
-                                        formControlName="picId"
-                                        [options]="users"
-                                        [(ngModel)]="selectedUser"
-                                        optionLabel="fullname"
-                                        optionValue="id"
-                                    >                                        
+                                    <p-dropdown [filter]="true" fileterBy="fullname" styleClass="custom-dropdown"
+                                        formControlName="picId" [options]="users" [(ngModel)]="selectedUser"
+                                        optionLabel="fullname" optionValue="id">
                                     </p-dropdown>
                                 </div>
                                 <div class="col-12 md:col-3">
                                     <Label>Company</Label>
                                 </div>
                                 <div class="col-12 md:col-9">
-                                    <p-dropdown 
-                                        [filter]="true" 
-                                        filterBy="companyName" 
-                                        styleClass="custom-dropdown"
-                                        formControlName="companyId" 
-                                        [options]="companies" 
-                                        [(ngModel)]="selectedCompany"
-                                        optionLabel="companyName" 
-                                        optionValue="id"
-                                        >                                        
-                                    </p-dropdown>                                    
+                                    <p-dropdown [filter]="true" filterBy="companyName" styleClass="custom-dropdown"
+                                        formControlName="companyId" [options]="companies" [(ngModel)]="selectedCompany"
+                                        optionLabel="companyName" optionValue="id">
+                                    </p-dropdown>
                                 </div>
                                 <div class="col-12 md:col-3">
                                     <Label>Job Level</Label>
                                 </div>
                                 <div class="col-12 md:col-7">
-                                    <p-dropdown                                     
-                                    styleClass="custom-dropdown"
-                                    formControlName="jobLevelId" 
-                                    [options]="jobLevels" 
-                                    [(ngModel)]="selectedJobLevel"
-                                    optionLabel="jobLevelName" 
-                                    optionValue="id"
-                                    >                                        
-                                    </p-dropdown>     
+                                    <p-dropdown styleClass="custom-dropdown" formControlName="jobLevelId"
+                                        [options]="jobLevels" [(ngModel)]="selectedJobLevel" optionLabel="jobLevelName"
+                                        optionValue="id">
+                                    </p-dropdown>
                                 </div>
                                 <div class="col-12 md:col-3">
                                     <Label>Location</Label>
@@ -128,17 +117,18 @@
                         <label>Job Description</label>
                     </div>
                     <div class="col-12 md:col-9">
-                        <textarea pInputTextarea class="p-inputtext-sm" formControlName="jobDesc" [style]="{height : '18rem', width: '40rem'}"></textarea>
+                        <textarea pInputTextarea class="p-inputtext-sm" formControlName="jobDesc"
+                            [style]="{height : '18rem', width: '40rem'}"></textarea>
                     </div>
                     <div class="col-12 md:col-3">
                         <Label>Benefit</Label>
                     </div>
                     <div class="col-12 md:col-9">
-                        <textarea formControlName="benefitDesc" class="p-inputtext-sm" [style]="{height : '18rem', width: '40rem'}"
-                            pInputTextarea></textarea>
+                        <textarea formControlName="benefitDesc" class="p-inputtext-sm"
+                            [style]="{height : '18rem', width: '40rem'}" pInputTextarea></textarea>
                     </div>
-                </div>
-            </form>
+                </div>               
+            </form>            
         </p-card>
         <pre>{{jobVacancyUpdateReqDto.value | json}}</pre>
     </div>

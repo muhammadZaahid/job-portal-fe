@@ -60,8 +60,14 @@
                         <label class="text-color-secondary" for="password">Password</label>
                         <input pInputText id="password" type="password" formControlName="password" />
                     </div>              
-                    <p-button  styleClass="sigin-button" type="submit" label="Register Account"
-                        [loading]="loading"></p-button>
+                    <p-button  
+                        styleClass="sigin-button" 
+                        type="submit" 
+                        label="Register Account"
+                        [loading]="loading"
+                        [disabled]="registerReq.invalid"
+                    >
+                    </p-button>
 
                     <div class="flex flex-row mt-2 md:mt-2 text-lg">
                         <span class="text-color-secondary">

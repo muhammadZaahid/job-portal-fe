@@ -5,9 +5,9 @@ import { AuthService } from "../../services/auth.service";
     selector : 'dashboard',
     templateUrl : './dashboard.component.html'
 })
-export class DashboardComponent implements OnInit{
+export class DashboardComponent{
 
-    fullname = 'Zaahid'
+    fullname = ''
 
     constructor(
         private authService : AuthService
@@ -17,9 +17,5 @@ export class DashboardComponent implements OnInit{
         if(profile){
             this.fullname = profile.profileName
         }
-    }
-
-    ngOnInit(): void {
-        
     }
 }

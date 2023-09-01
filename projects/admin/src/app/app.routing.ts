@@ -8,9 +8,9 @@ import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { CardModule } from 'primeng/card';
 import { ReactiveFormsModule } from "@angular/forms";
 import { authValidation, authValidationLogin } from "./validation/auth.validation";
+import { SharedModule } from "./components/shared-module";
 
 const routes : Routes = [
     {
@@ -59,7 +59,7 @@ const routes : Routes = [
                 
             }
         ]
-    },
+    },            
     {
         path : 'login',
         children : [
@@ -83,7 +83,8 @@ const routes : Routes = [
 
 @NgModule({
     declarations: [
-        LoginComponent
+        LoginComponent,
+        DashboardComponent
     ],
     imports : [
         RouterModule.forRoot(routes),
@@ -91,12 +92,11 @@ const routes : Routes = [
         CommonModule,
         ButtonModule,
         InputTextModule,
-        CardModule,
+        SharedModule,
         ReactiveFormsModule
     ],
     exports : [
         RouterModule,
-        CommonModule,
         CommonModule
     ]
 })

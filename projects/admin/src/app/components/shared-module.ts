@@ -15,6 +15,10 @@ import { MenuModule } from 'primeng/menu';
 import { TagModule } from 'primeng/tag';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { StepsModule } from 'primeng/steps';
+import { ScrollTopModule } from 'primeng/scrolltop';
+import { ScrollPanelModule } from "primeng/scrollpanel";
+import { AvatarModule } from "primeng/avatar";
 
 @NgModule({
     imports : [
@@ -32,7 +36,11 @@ import { InputSwitchModule } from 'primeng/inputswitch';
         MenuModule,
         TagModule,
         KeyFilterModule,
-        InputSwitchModule
+        InputSwitchModule,
+        StepsModule,
+        ScrollTopModule,
+        ScrollPanelModule,
+        AvatarModule
     ],
     exports : [
         TableModule,
@@ -50,7 +58,11 @@ import { InputSwitchModule } from 'primeng/inputswitch';
         MenuModule,
         TagModule,
         KeyFilterModule,
-        InputSwitchModule
+        InputSwitchModule,
+        StepsModule,
+        ScrollTopModule,
+        ScrollPanelModule,
+        AvatarModule
     ]
 })
 export class SharedModule{

@@ -1,39 +1,166 @@
 <div class="grid">
     <div class="col-12 md:col-8 md:col-offset-2 mt-6 md:mt-6">
         <h1 class="p-3">My Applications</h1>
-        <p-tabMenu [model]="items"></p-tabMenu>
     </div>
+
     <div class="col-12 md:col-8 md:col-offset-2 mt-2">
-        <div *ngFor="let a of applications">
-            <div class="grid">
-                <div class="col-12 md:col-6">
-                    <div class="flex flex-row">
-                        <p-avatar image="http://localhost:8081/seeker/file/{{a.companyPhotoId}}" styleClass="mr-2"
-                            shape="circle"></p-avatar>
-                        <div class="flex flex-column mx-2">
-                            <p-badge [value]="a.currentStage" severity="info"></p-badge>
-                            <span class="mt-2 font-bold text-xl">
-                                {{a.jobTitle}}
-                            </span>
-                            <span class="text-lg">{{a.companyName}}</span>
-                            <span class="text-lg">Jakarta</span>
-                            <span class="text-sm text-color-secondary">Applied on {{a.appliedDate}}</span>
+        <p-tabView>         
+            <p-tabPanel header="Applied">
+                <div *ngFor="let a of applications">
+                    <div class="grid">
+                        <div class="col-12 md:col-6">
+                            <div class="flex flex-row">
+                                <p-avatar image="http://localhost:8081/seeker/file/{{a.companyPhotoId}}"
+                                    styleClass="mr-2" shape="circle"></p-avatar>
+                                <div class="flex flex-column mx-2">
+                                    <p-badge [value]="a.currentStage" severity="info"></p-badge>
+                                    <span class="mt-2 font-bold text-xl">
+                                        {{a.jobTitle}}
+                                    </span>
+                                    <span class="text-lg">{{a.companyName}}</span>
+                                    <span class="text-lg">Jakarta</span>
+                                    <span class="text-sm text-color-secondary">Applied on {{a.appliedDate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="a.currentStage == 'assessment' && a.topicId != null && a.doneAssessment == false"
+                            class="col-12 md:col-2 md:col-offset-4">
+                            <p-button styleClass="p-button-sm"
+                                routerLink="/candidate/question/detail/{{a.topicId}}/{{a.jobVacancyId}}">
+                                <span class="text-xs font-bold">Start Assessment</span>
+                            </p-button>
+                        </div>
+                        <div *ngIf="a.currentStage == 'assessment' && a.doneAssessment == true"
+                            class="col-12 md:col-2 md:col-offset-4">
+                            <p-tag severity="success">Assessment Done</p-tag>
+
                         </div>
                     </div>
+                    <p-divider></p-divider>
                 </div>
-                <div *ngIf="a.currentStage == 'assessment' && a.topicId != null && a.doneAssessment == false"
-                    class="col-12 md:col-3 md:col-offset-3">
-                    <p-button class="p-button-sm"
-                        routerLink="/candidate/question/detail/{{a.topicId}}/{{a.jobVacancyId}}">
-                        <span class="text-sm">Start Assessment</span>
-                    </p-button>
+            </p-tabPanel>
+            <p-tabPanel header="Assessment">
+                <div *ngFor="let a of applicationsAssessment">
+                    <div class="grid">
+                        <div class="col-12 md:col-6">
+                            <div class="flex flex-row">
+                                <p-avatar image="http://localhost:8081/seeker/file/{{a.companyPhotoId}}"
+                                    styleClass="mr-2" shape="circle"></p-avatar>
+                                <div class="flex flex-column mx-2">
+                                    <p-badge [value]="a.currentStage" severity="info"></p-badge>
+                                    <span class="mt-2 font-bold text-xl">
+                                        {{a.jobTitle}}
+                                    </span>
+                                    <span class="text-lg">{{a.companyName}}</span>
+                                    <span class="text-lg">Jakarta</span>
+                                    <span class="text-sm text-color-secondary">Applied on {{a.appliedDate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="a.currentStage == 'assessment' && a.topicId != null && a.doneAssessment == false"
+                            class="col-12 md:col-2 md:col-offset-4">
+                            <p-button styleClass="p-button-sm"
+                                routerLink="/candidate/question/detail/{{a.topicId}}/{{a.jobVacancyId}}">
+                                <span class="text-xs font-bold">Start Assessment</span>
+                            </p-button>
+                        </div>
+                        <div *ngIf="a.currentStage == 'assessment' && a.doneAssessment == true"
+                            class="col-12 md:col-2 md:col-offset-4">
+                            <p-tag severity="success">Assessment Done</p-tag>
+
+                        </div>
+                    </div>
+                    <p-divider></p-divider>
                 </div>
-                <div *ngIf="a.currentStage == 'assessment' && a.doneAssessment == true"
-                    class="col-12 md:col-3 md:col-offset-3">
-                    <span class="text-sm" style="color:green">Done Assessment!</span>
+            </p-tabPanel>
+            <p-tabPanel header="Interview">
+                <div *ngFor="let a of applicationsInterview">
+                    <div class="grid">
+                        <div class="col-12 md:col-6">
+                            <div class="flex flex-row">
+                                <p-avatar image="http://localhost:8081/seeker/file/{{a.companyPhotoId}}"
+                                    styleClass="mr-2" shape="circle"></p-avatar>
+                                <div class="flex flex-column mx-2">
+                                    <p-badge [value]="a.currentStage" severity="info"></p-badge>
+                                    <span class="mt-2 font-bold text-xl">
+                                        {{a.jobTitle}}
+                                    </span>
+                                    <span class="text-lg">{{a.companyName}}</span>
+                                    <span class="text-lg">Jakarta</span>
+                                    <span class="text-sm text-color-secondary">Applied on {{a.appliedDate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p-divider></p-divider>
                 </div>
-            </div>
-            <p-divider></p-divider>
-        </div>
+            </p-tabPanel>
+            <p-tabPanel header="MCU">
+                <div *ngFor="let a of applicationsMcu">
+                    <div class="grid">
+                        <div class="col-12 md:col-6">
+                            <div class="flex flex-row">
+                                <p-avatar image="http://localhost:8081/seeker/file/{{a.companyPhotoId}}"
+                                    styleClass="mr-2" shape="circle"></p-avatar>
+                                <div class="flex flex-column mx-2">
+                                    <p-badge [value]="a.currentStage" severity="info"></p-badge>
+                                    <span class="mt-2 font-bold text-xl">
+                                        {{a.jobTitle}}
+                                    </span>
+                                    <span class="text-lg">{{a.companyName}}</span>
+                                    <span class="text-lg">Jakarta</span>
+                                    <span class="text-sm text-color-secondary">Applied on {{a.appliedDate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p-divider></p-divider>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="Offer">
+                <div *ngFor="let a of applicationsOffer">
+                    <div class="grid">
+                        <div class="col-12 md:col-6">
+                            <div class="flex flex-row">
+                                <p-avatar image="http://localhost:8081/seeker/file/{{a.companyPhotoId}}"
+                                    styleClass="mr-2" shape="circle"></p-avatar>
+                                <div class="flex flex-column mx-2">
+                                    <p-badge [value]="a.currentStage" severity="info"></p-badge>
+                                    <span class="mt-2 font-bold text-xl">
+                                        {{a.jobTitle}}
+                                    </span>
+                                    <span class="text-lg">{{a.companyName}}</span>
+                                    <span class="text-lg">Jakarta</span>
+                                    <span class="text-sm text-color-secondary">Applied on {{a.appliedDate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p-divider></p-divider>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="Hired">
+                <div *ngFor="let a of applicationsHired">
+                    <div class="grid">
+                        <div class="col-12 md:col-6">
+                            <div class="flex flex-row">
+                                <p-avatar image="http://localhost:8081/seeker/file/{{a.companyPhotoId}}"
+                                    styleClass="mr-2" shape="circle"></p-avatar>
+                                <div class="flex flex-column mx-2">
+                                    <p-badge [value]="a.currentStage" severity="info"></p-badge>
+                                    <span class="mt-2 font-bold text-xl">
+                                        {{a.jobTitle}}
+                                    </span>
+                                    <span class="text-lg">{{a.companyName}}</span>
+                                    <span class="text-lg">Jakarta</span>
+                                    <span class="text-sm text-color-secondary">Applied on {{a.appliedDate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p-divider></p-divider>
+                </div>
+            </p-tabPanel>
+        </p-tabView>
     </div>
 </div>

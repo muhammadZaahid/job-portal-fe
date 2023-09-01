@@ -5,4 +5,7 @@ export interface InterviewResDto {
     interviewTime: string
     interviewLocation: string
     interviewNote: string
+    interviewName: string
+    interviewPhone: string
+    interviewEmail: string
 }
