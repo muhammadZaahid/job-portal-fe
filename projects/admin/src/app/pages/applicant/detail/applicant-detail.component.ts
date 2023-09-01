@@ -115,6 +115,7 @@ export class ApplicantDetailComponent implements OnInit {
         this.applicantService.getApplicantDetail(applicantId).subscribe(result => {
             console.log(result)
             this.applicantDetail = result
+            this.hasMedical = result.hasMedicalFile
             this.getCandidate(result.candidateId)
             if (result.assessment) {
                 this.getAssessment(applicantId)
@@ -122,7 +123,7 @@ export class ApplicantDetailComponent implements OnInit {
             if (result.interview) {
                 this.getInterview(applicantId)
             }
-            if (result.mcu) {
+            if (this.hasMedical) {
                 this.getMedical(applicantId)
             }
             if (result.offer){
