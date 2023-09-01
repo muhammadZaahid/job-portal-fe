@@ -1,0 +1,88 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+@import "primeflex/themes/primeone-light.css";
+
+body {
+	font-family: var(--font-family);
+	margin: 0;
+}
+
+.p-button.edit-profile-button {
+	background-color: #B4F8C8 !important;
+	color: #0A4C86 !important;
+	border: 0;
+}
+
+.p-button.save-profile-button {
+	background-color: #0A4C86 !important;
+	color: #B4F8C8 !important;
+	border: 0;
+}
+
+.i.resume-menu-icon {
+	background-color: #0A4C86 !important;
+}
+
+.p-button.resume-menu-button {
+	background-color: white !important;
+	color: #0A4C86 !important;
+	border: 0;
+}
+
+.p-button.sigin-button{
+	background-color: #0A4C86 !important;
+	color: white !important;
+}
+
+.p-menubar.menubar-style {
+	width: 100vw;
+}
+
+.p-card.job-list-card {
+	height: 16rem;
+	width: 25rem;
+}
+
+.p-card.job-list-card-on-click {
+	border: 1px solid;
+	border-color: #0A4C86;
+	height: 16rem;
+	width: 25rem;
+}
+
+:host ::ng-deep .p-card.job-list-card-on-click {
+	border: 1px solid;
+	border-color: #0A4C86;
+	height: 16rem;
+	width: 25rem;
+}
+
+.background {
+	position: relative;
+}
+
+.layer {
+	background: linear-gradient(180deg,
+			rgba(21, 101, 216, 0.7) 0%,
+			rgba(0, 27, 65, 0.63) 68.23%);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.center-screen{
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

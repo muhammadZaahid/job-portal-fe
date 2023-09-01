@@ -1,0 +1,89 @@
+<!-- <div class="grid mt-8">    
+    <div class="col-12 flex align-items-center justify-content-center">
+        <form [formGroup]="loginReqDto" (ngSubmit)="onLogin()">
+            <p-card>
+                <div class="p-fluid">
+                    <div class="field">
+                        <label for="username">Username</label>
+                        <input pInputText id="username" type="text" formControlName="email" />
+                    </div>
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input pInputText id="password" type="password" formControlName="password" />
+                    </div>
+                    <p-button *ngIf="!loading" type="submit" label="Login" [disabled]="loginReqDto.invalid"></p-button>
+                    <p-button *ngIf="loading" type="button" label="Login" [loading]="loading" ></p-button>
+                </div>
+            </p-card>
+        </form>        
+    </div>
+</div> -->
+<div class="grid">
+    <div class="col-12 md:col-6">
+        <div class="background">
+            <img src="../../../assets/images/loginBanner.jpeg" alt="" [style]="{width:'49.4vw', height: '100vh'}">
+            <div class="layer">
+                <div class="grid">
+                    <div class="col-12 md:col-10 md:col-offset-1 ">
+                        <div class="flex flex-column text-white">
+                            <span class="mb-2 md:mb-2 text-justify" style="font-family: Georgia, serif;">
+                                Without ambition one starts nothing. Without work one finishes nothing.
+                                The prize will not be sent to you. You have to win it.
+                            </span>
+                            <span class="font-bold">
+                                - Ralph Waldo Emerson
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col md:col-6">
+        
+        <div class="center-screen">
+            <form [formGroup]="loginReqDto" (ngSubmit)="onLogin()">
+            <div class="p-fluid">
+                <div class="field">
+                    <div class="flex flex-row">
+                        <span style="font-size: xx-large;">
+                            Sign in to
+                        </span>
+                        <span class="ml-2" style="font-size: xx-large; color: #0A4C86;">
+                            yuk
+                        </span>
+                        <span style="font-size: xx-large;">
+                            -
+                        </span>
+                        <span style="font-size: xx-large; color: #0A4C86;">
+                            Kerja
+                        </span>
+                    </div>                    
+                </div>
+                <div class="field">
+                    <label class="text-color-secondary" for="username">Username</label>
+                    <input pInputText id="username" type="text" formControlName="email" />
+                </div>
+                <div class="field">
+                    <label class="text-color-secondary" for="password">Password</label>
+                    <input pInputText id="password" type="password" formControlName="password" />
+                </div>
+                <p-button styleClass="sigin-button" *ngIf="!loading" type="submit" label="Sign In" [disabled]="loginReqDto.invalid"></p-button>
+                <p-button *ngIf="loading" type="button" label="Sign In" [loading]="loading"></p-button>
+                <div class="flex flex-row mt-2 md:mt-2 text-lg">
+                    <span class="text-color-secondary">
+                        Don't have an account?
+                    </span>
+                   
+                    <a routerLink="/register" style="text-decoration: none;">
+                        <span class="ml-2 md:ml-2" style="color: #0A4C86;">
+                            Sign Up
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="grid">
+    <div class="col-12 mt-6 md:mt-6">
+        <p-card header="Candidate List">
+            <div class="grid">
+                <div class="col-12 flex flex-row-reverse">
+                    <p-button class="mx-2 md:mx-2" icon="pi pi-plus" label="Add Candidate"
+                        styleClass="p-button-success p-button-sm"></p-button>
+                    <p-button (click)="getCandidateId()" (click)="showDialog()" [disabled]="clickedRadioButton"
+                        icon="pi pi-plus" label="Add to Vacancy" styleClass="p-button-success p-button-sm"></p-button>
+                </div>
+
+                <div class="col">
+
+                </div>
+            </div>
+            <p-table [value]="candidates" [(selection)]="selectedCandidate" dataKey="id"
+                [tableStyle]="{'min-width': '50rem'}">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 4rem"></th>
+                        <th>No.</th>
+                        <th>NIK</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Experience Year</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-candidates let-rowIndex="rowIndex">
+                    <tr>
+                        <td>
+                            <p-tableRadioButton (click)="clickedRadioButton = false;"
+                                [value]="candidates"></p-tableRadioButton>
+                        </td>
+                        <td>{{rowIndex+1}}</td>
+                        <td>{{ candidates.nik }}</td>
+                        <td>{{ candidates.name }}</td>
+                        <td>{{ candidates.email }}</td>
+                        <td>{{ candidates.phone }}</td>
+                        <td>{{ candidates.experienceYear }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-card>
+    </div>
+</div>
+<pre>{{applicantInsertReqDto.value | json}}</pre>
+
+<p-dialog [modal]=true header="Add to Job Vacancy" [(visible)]="visible" [style]="{width: '80vw', height:'80vh'}">
+    <pre>{{applicantInsertReqDto.value | json}}</pre>
+    <form [formGroup]="applicantInsertReqDto" (ngSubmit)="onAdd()">
+        <div class="flex flex-row-reverse">
+            <p-button type="submit" (click)="getJobVacancyId()" [disabled]="clickedRadioButtonJob"
+            icon="pi pi-plus" label="Add" styleClass="p-button-success p-button-sm"></p-button>
+        </div>        
+        <div class="grid mt-3 md:mt-3 justify-content-center">
+            <p-table [value]="jobVacancies" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,15,20]" [(selection)]="selectedJobVacancy" dataKey="id"
+            [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 4rem"></th>
+                        <th>No.</th>
+                        <th>Code</th>
+                        <th>Title</th>
+                        <th>PIC</th>
+                        <th>Company</th>
+                        <th>Job Level</th>
+                        <th>Location</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-jobVacancies let-rowIndex="rowIndex">
+                    <tr>
+                        <td>
+                            <p-tableRadioButton (click)="clickedRadioButtonJob = false;"
+                                [value]="jobVacancies"></p-tableRadioButton>
+                        </td>
+                        <td>{{rowIndex+1}}</td>
+                        <td>{{ jobVacancies.code }}</td>
+                        <td>{{ jobVacancies.title }}</td>
+                        <td>{{ jobVacancies.picName }}</td>
+                        <td>{{ jobVacancies.companyName }}</td>
+                        <td>{{ jobVacancies.jobLevelName }}</td>
+                        <td>{{ jobVacancies.location }}</td>
+                        <td>{{ jobVacancies.startDate }}</td>
+                        <td>{{ jobVacancies.endDate }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </form>
+</p-dialog>

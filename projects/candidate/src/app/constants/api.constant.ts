@@ -1,0 +1,1 @@
+export const BASE_URL_CANDIDATE = 'http://localhost:8081/seeker'
