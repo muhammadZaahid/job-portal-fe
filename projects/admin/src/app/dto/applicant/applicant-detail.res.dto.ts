@@ -8,4 +8,5 @@ export interface ApplicantDetailResDto {
     offer : boolean
     jobVacancyId : string
     appliedDate : string
+    hasMedicalFile : boolean
 }
