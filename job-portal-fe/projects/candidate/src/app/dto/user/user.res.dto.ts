@@ -1,3 +1,5 @@
+import { FileReqDto } from "../file/file.req.dto"
+
 export interface UserResDto {
 	id : string
 	nik : string
@@ -13,4 +15,6 @@ export interface UserResDto {
 	salaryExpectation : number
 	photoId : string
 	resumeId : string
+	photo : FileReqDto
+	resume : FileReqDto
 }
