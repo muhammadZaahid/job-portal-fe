@@ -9,109 +9,104 @@
 
 <div class="grid">
     <div class="col-12 md:col-2 md:col-offset-1 mt-8 md:mt-8">
-        <p-card>
-            <div class="flex text-aligns-center justify-content-center">
-                <div class="flex flex-column">
-                    <p-avatar 
-                        icon="pi pi-user" 
-                        [style]="{'background-color':'#2196F3', 'color': '#ffffff'}" 
-                        styleClass="ml-2" 
-                        shape="circle"></p-avatar>
+        <ng-container *ngIf="totalCandidate">
+            <p-card>
+                <div class="flex text-aligns-center justify-content-center">
+                    <p-avatar icon="pi pi-users" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"
+                        shape="circle"></p-avatar>                   
+                </div>
+                <div class="flex text-aligns-center justify-content-center">
                     <span class="text-5xl font-bold mt-3 md:mt-3">
-                        56
-                    </span>                    
-                </div>                               
-            </div>   
-            <div class="flex text-aligns-center justify-content-center">
-                <span class="text-base mt-3 md:mt-3">
-                    Total Candidate
-                </span>
-            </div>           
-        </p-card>
+                        {{totalCandidate.total}}
+                    </span>
+                </div>
+                <div class="flex text-aligns-center justify-content-center">
+                    <span class="text-base mt-3 md:mt-3">
+                        Total Candidate
+                    </span>
+                </div>
+            </p-card>
+        </ng-container>
     </div>
     <div class="col-12 md:col-2 mt-8 md:mt-8">
-        <p-card>
-            <div class="flex text-aligns-center justify-content-center">
-                <div class="flex flex-column">
-                    <p-avatar 
-                        icon="pi pi-user" 
-                        [style]="{'background-color':'#2196F3', 'color': '#ffffff'}" 
-                        styleClass="ml-2" 
-                        shape="circle"></p-avatar>
+        <ng-container *ngIf="totalApplicant">
+            <p-card>
+                <div class="flex text-aligns-center justify-content-center">
+                    <p-avatar icon="pi pi-id-card" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"
+                        shape="circle"></p-avatar>                   
+                </div>
+                <div class="flex text-aligns-center justify-content-center">
                     <span class="text-5xl font-bold mt-3 md:mt-3">
-                        56
-                    </span>                    
-                </div>                               
-            </div>   
-            <div class="flex text-aligns-center justify-content-center">
-                <span class="text-base mt-3 md:mt-3">
-                    Total Candidate
-                </span>
-            </div>           
-        </p-card>
+                        {{totalApplicant.total}}
+                    </span>
+                </div>
+                <div class="flex text-aligns-center justify-content-center">
+                    <span class="text-base mt-3 md:mt-3">
+                        Total Applicant
+                    </span>
+                </div>
+            </p-card>
+        </ng-container>
     </div>
     <div class="col-12 md:col-2 mt-8 md:mt-8">
-        <p-card>
-            <div class="flex text-aligns-center justify-content-center">
-                <div class="flex flex-column">
-                    <p-avatar 
-                        icon="pi pi-user" 
-                        [style]="{'background-color':'#2196F3', 'color': '#ffffff'}" 
-                        styleClass="ml-2" 
-                        shape="circle"></p-avatar>
+        <ng-container *ngIf="totalCompany">
+            <p-card>
+                <div class="flex text-aligns-center justify-content-center">
+                    <p-avatar icon="pi pi-building" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"
+                        shape="circle"></p-avatar>                   
+                </div>
+                <div class="flex text-aligns-center justify-content-center">
                     <span class="text-5xl font-bold mt-3 md:mt-3">
-                        56
-                    </span>                    
-                </div>                               
-            </div>   
-            <div class="flex text-aligns-center justify-content-center">
-                <span class="text-base mt-3 md:mt-3">
-                    Total Candidate
-                </span>
-            </div>           
-        </p-card>
+                        {{totalCompany.total}}
+                    </span>
+                </div>
+                <div class="flex text-aligns-center justify-content-center">
+                    <span class="text-base mt-3 md:mt-3">
+                        Total Company
+                    </span>
+                </div>
+            </p-card>
+        </ng-container>
     </div>
     <div class="col-12 md:col-2 mt-8 md:mt-8">
-        <p-card>
-            <div class="flex text-aligns-center justify-content-center">
-                <div class="flex flex-column">
-                    <p-avatar 
-                        icon="pi pi-user" 
-                        [style]="{'background-color':'#2196F3', 'color': '#ffffff'}" 
-                        styleClass="ml-2" 
-                        shape="circle"></p-avatar>
+        <ng-container *ngIf="totalJobVacancy">
+            <p-card>
+                <div class="flex text-aligns-center justify-content-center">
+                    <p-avatar icon="pi pi-briefcase" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"
+                        shape="circle"></p-avatar>                   
+                </div>
+                <div class="flex text-aligns-center justify-content-center">
                     <span class="text-5xl font-bold mt-3 md:mt-3">
-                        56
-                    </span>                    
-                </div>                               
-            </div>   
-            <div class="flex text-aligns-center justify-content-center">
-                <span class="text-base mt-3 md:mt-3">
-                    Total Candidate
-                </span>
-            </div>           
-        </p-card>
+                        {{totalJobVacancy.total}}
+                    </span>
+                </div>
+                <div class="flex text-aligns-center justify-content-center">
+                    <span class="text-base mt-3 md:mt-3">
+                        Total Job Vacancy
+                    </span>
+                </div>
+            </p-card>
+        </ng-container>
     </div>
     <div class="col-12 md:col-2 mt-8 md:mt-8">
-        <p-card>
-            <div class="flex text-aligns-center justify-content-center">
-                <div class="flex flex-column">
-                    <p-avatar 
-                        icon="pi pi-user" 
-                        [style]="{'background-color':'#2196F3', 'color': '#ffffff'}" 
-                        styleClass="ml-2" 
-                        shape="circle"></p-avatar>
+        <ng-container *ngIf="totalUser">
+            <p-card>
+                <div class="flex text-aligns-center justify-content-center">
+                    <p-avatar icon="pi pi-desktop" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"
+                        shape="circle"></p-avatar>                   
+                </div>
+                <div class="flex text-aligns-center justify-content-center">
                     <span class="text-5xl font-bold mt-3 md:mt-3">
-                        56
-                    </span>                    
-                </div>                               
-            </div>   
-            <div class="flex text-aligns-center justify-content-center">
-                <span class="text-base mt-3 md:mt-3">
-                    Total Job Vacancy
-                </span>
-            </div>           
-        </p-card>
+                        {{totalUser.total}}
+                    </span>
+                </div>
+                <div class="flex text-aligns-center justify-content-center">
+                    <span class="text-base mt-3 md:mt-3">
+                        Total User Admin
+                    </span>
+                </div>
+            </p-card>
+        </ng-container>
     </div>
 </div>
 <!--END CONTENT -->
