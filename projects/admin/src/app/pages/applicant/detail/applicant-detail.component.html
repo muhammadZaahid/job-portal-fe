@@ -8,13 +8,9 @@
                 </span>
             </div>
         </a>
-        <p-card header="Applicant Detail">     
+        <p-card header="Applicant Detail">
             <div class="mb-6 md:mb-6 mt-4 md:mt-4">
-                <p-steps 
-                    [model]="stages" 
-                    [readonly]="true"
-                    [activeIndex]="activeIndex"
-                >
+                <p-steps [model]="stages" [readonly]="true" [activeIndex]="activeIndex">
                 </p-steps>
             </div>
             <p-divider></p-divider>
@@ -204,9 +200,16 @@
                             <div class="col-12 md:col-3">
                                 <Label>Score</Label>
                             </div>
-                            <div class="col-12 md:col-7">
+                            <div class="col-12 md:col-4">
                                 <input placeholder="-" [value]="assessment.assessmentScore" disabled
                                     class="p-inputtext-sm font-bold" pInputText type="text">
+                            </div>
+                            <div class="col-12 md:col-3 md:col-offset-2" styleClass="p-button-sm">
+                                <p-button (click)="updateAssessmentResultModal()">
+                                    <span class="text-xs font-bold">
+                                        Update Result
+                                    </span>
+                                </p-button>
                             </div>
                             <div class="col-12 md:col-3">
                                 <Label>Note</Label>
@@ -481,4 +484,31 @@
         </div>
     </form>
     <pre>{{offeringReqDto.value | json}}</pre>
+</p-dialog>
+
+<p-dialog header="Update Assessment Result" [style]="{width: '50vw'}" [(visible)]="updateResultVisible" [modal]="true"
+    [draggable]="false" [resizable]="false">
+    <p-divider></p-divider>
+    <form [formGroup]="offeringReqDto" (ngSubmit)=onAddOffer()>
+        <div class="grid mt-3 md:mt-3">
+            <div class="col-12 md:col-3 md:col-offset-2">
+                <Label>Score</Label>
+            </div>
+            <div class="col-12 md:col-7">
+                <input formControlName="offerSalary" class="p-inputtext-sm" pInputText type="text">
+            </div>
+
+            <div class="col-12 md:col-3 md:col-offset-2">
+                <Label>Note</Label>
+            </div>
+            <div class="col-12 md:col-7">
+                <textarea pInputTextarea class="p-inputtext-sm"></textarea>
+            </div>
+
+            <div class="col-12 md:col-3 md:col-offset-6">
+                <p-button type="submit" [disabled]="offeringReqDto.invalid" label="Submit"
+                styleClass="p-button-primary p-button-sm"></p-button>
+            </div>           
+        </div>
+    </form>
 </p-dialog>

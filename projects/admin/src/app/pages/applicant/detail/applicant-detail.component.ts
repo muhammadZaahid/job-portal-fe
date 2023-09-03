@@ -49,6 +49,7 @@ export class ApplicantDetailComponent implements OnInit {
     visible: boolean = false
     medicalVisible = false
     offerVisible = false
+    updateResultVisible = false
 
     stages: MenuItem[] | undefined;
     activeIndex : number = 0
@@ -232,6 +233,10 @@ export class ApplicantDetailComponent implements OnInit {
         this.offeringReqDto.patchValue({
             applicantId: this.activatedRoute.snapshot.params["id"]
         })
+    }
+
+    updateAssessmentResultModal(){
+        this.updateResultVisible = true
     }
 
     getStage(){

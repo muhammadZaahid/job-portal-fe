@@ -3,16 +3,17 @@
         <p-card header="Applicant List">
             <form>
                 <div class="grid">
-                    <div class="col-12 md:col-3">
-                        <p-calendar dateFormat="yy-mm-dd" (onSelect)="startDateWithoutTime($event)"></p-calendar>
-                        <p-calendar dateFormat="yy-mm-dd" (onSelect)="endDateWithoutTime($event)"></p-calendar>
-                        <p-button (click)="getFiltered()"
-                            icon="pi pi-search-plus"
-                            styleClass="p-button-success p-button-sm"></p-button>
-                    </div>
-
-                    <div class="col">
-
+                    <div class="col-12 md:col-5">
+                        <div class="flex flex-row">
+                            <p-calendar dateFormat="yy-mm-dd" (onSelect)="startDateWithoutTime($event)"></p-calendar> 
+                            <span class="text-lg font-bold mx-3 md:mx-3 mt-2 md:mt-2">
+                                To
+                            </span>   
+                            <p-calendar dateFormat="yy-mm-dd" (onSelect)="endDateWithoutTime($event)"></p-calendar>
+                            <p-button class="ml-3 md:ml-3" (click)="getFiltered()"
+                                icon="pi pi-search-plus"
+                                styleClass="p-button-success p-button-sm"></p-button>        
+                        </div>                                  
                     </div>
                 </div>
             </form>
