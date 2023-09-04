@@ -44,10 +44,7 @@
         </p-card>
     </div>
 </div>
-<pre>{{applicantInsertReqDto.value | json}}</pre>
-
 <p-dialog [modal]=true header="Add to Job Vacancy" [(visible)]="visible" [style]="{width: '80vw', height:'80vh'}">
-    <pre>{{applicantInsertReqDto.value | json}}</pre>
     <form [formGroup]="applicantInsertReqDto" (ngSubmit)="onAdd()">
         <div class="flex flex-row-reverse">
             <p-button type="submit" (click)="getJobVacancyId()" [disabled]="clickedRadioButtonJob"

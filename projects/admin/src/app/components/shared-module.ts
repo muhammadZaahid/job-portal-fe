@@ -19,6 +19,7 @@ import { StepsModule } from 'primeng/steps';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { ScrollPanelModule } from "primeng/scrollpanel";
 import { AvatarModule } from "primeng/avatar";
+import { PanelModule } from "primeng/panel";
 
 @NgModule({
     imports : [
@@ -40,7 +41,8 @@ import { AvatarModule } from "primeng/avatar";
         StepsModule,
         ScrollTopModule,
         ScrollPanelModule,
-        AvatarModule
+        AvatarModule,
+        PanelModule
     ],
     exports : [
         TableModule,
@@ -62,7 +64,8 @@ import { AvatarModule } from "primeng/avatar";
         StepsModule,
         ScrollTopModule,
         ScrollPanelModule,
-        AvatarModule
+        AvatarModule,
+        PanelModule
     ]
 })
 export class SharedModule{

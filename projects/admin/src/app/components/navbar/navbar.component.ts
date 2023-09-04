@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { MenuItem } from "primeng/api/menuitem";
 import { AuthService } from "../../services/auth.service";
@@ -10,6 +10,8 @@ import { AuthService } from "../../services/auth.service";
 export class NavbarComponent implements OnInit{
 
     items : MenuItem[] | undefined
+    isMobile: boolean = false;
+    styleRightItem! : string
 
     constructor(
         private authService : AuthService,
@@ -17,12 +19,21 @@ export class NavbarComponent implements OnInit{
     ){}
 
     ngOnInit(): void {
+        this.checkWindowSize();
+        if(this.isMobile){
+            this.styleRightItem =''
+      
+        }else{
+            this.styleRightItem ='absolute'
+        }
         const profile = this.authService.getProfile()
         if(profile){
+
+           
             this.items = [
                 {
                     label : 'Yukkerja',
-                    routerLink : '/dashboard'
+                    routerLink : '/dashboard'                    
                 },
                 {
                     label: 'Master Data',
@@ -73,7 +84,8 @@ export class NavbarComponent implements OnInit{
                 },                
                 {
                     label: profile.profileName,
-                    icon: 'pi pi-fw pi-user',
+                    icon: 'pi pi-fw pi-user',                                     
+                    style : { 'top': '1', 'right' : '0', 'position' : this.styleRightItem },                   
                 
                     items : [    
                         {
@@ -101,5 +113,15 @@ export class NavbarComponent implements OnInit{
     onLogOut(){
         localStorage.clear()
         this.router.navigateByUrl('/login')
+    }
+
+    @HostListener('window:resize', ['$event'])
+    onResize(event: Event) {
+        this.checkWindowSize();
+    }
+
+    checkWindowSize() {
+        const mobileBreakpoint = 768;
+        this.isMobile = window.innerWidth < mobileBreakpoint;
     }
 }

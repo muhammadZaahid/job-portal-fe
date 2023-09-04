@@ -57,6 +57,12 @@ const routes : Routes = [
     },
     {
         component : BaseComponent,
+        path : 'profile',
+        loadChildren : ()=> import('./pages/profile/profile.module').then(p => p.ProfileModule),
+        canMatch : [authValidation]
+    },
+    {
+        component : BaseComponent,
         path : 'dashboard',
         children : [
             {
